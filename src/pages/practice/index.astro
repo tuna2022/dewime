@@ -32,6 +32,65 @@ const jsonLd = breadcrumbSchema([
     </div>
   </section>
 
+  <section class="border-t border-stone-light/70 bg-paper px-6 py-16 md:px-10 md:py-24">
+    <div class="prose-content mx-auto max-w-3xl text-ink/85">
+      <p class="coord-mark">Notes on memory</p>
+      <p class="mt-6">
+        Architectural design is often conceived through drawings, models, and visualizations.
+        Yet, a building's true life begins not when design files are finalized, but when
+        construction commences on-site. Decisions that appear definitive on paper are reshaped
+        when confronted with material behavior, workmanship quality, existing site conditions,
+        budget constraints, timeframes, and unforeseen technical issues. Consequently, the
+        construction process is not merely the realization of a design but also its first
+        encounter with the real world.
+      </p>
+      <p>
+        Every decision made on the construction site leaves a subtle mark on the building's
+        future character. An on-site modification to a detail, a variation in material
+        application, a craftsman's improvised solution, the way light behaves differently than
+        anticipated, or the unexpected weathering of a surface—all become part of the design's
+        final form. The building sheds its flawless, abstract state from the drawings and
+        transforms into a tangible, material entity. This transformation simultaneously
+        establishes the space's initial layer of memory.
+      </p>
+      <p>However, the true memory of an architectural structure is formed once it comes into use.</p>
+      <p>
+        When people enter a space, they do not merely use it; they alter it. Where they stand,
+        the paths they choose, where they meet, which corners they claim as their own, and how
+        they transform the space generate meanings that were never originally envisioned. A
+        staircase may cease to be merely a structural element connecting two floors and instead
+        become a place where people sit. A square designed as a transit zone may evolve over time
+        into a venue for gatherings, protests, celebrations, or simply waiting. The function
+        intended by the designer and the meaning created by the user do not always align.
+      </p>
+      <p>
+        The space physically records these modes of use as well. Wear on the floor, the polished
+        surface of a door handle, material faded by the sun, a wall constantly touched by people,
+        or furniture replaced over the years—these elements make the passage of time within a
+        space visible. They are often viewed merely as maintenance issues, yet they are also
+        documents of the structure's history.
+      </p>
+      <p>
+        For this reason, it is difficult to pinpoint a definitive moment when architectural
+        design is complete. While the design process may technically end when the building is
+        handed over, the evolution of the space continues. People, objects, events, and time add
+        new layers to the structure.
+      </p>
+      <p>
+        Perhaps good architectural design is not merely that which dictates how a space is used,
+        but that which allows users to shape their own experiences. After all, the memory of a
+        space cannot be directly designed by the architect; the designer can only create the
+        conditions in which such memory can emerge.
+      </p>
+      <p>Thereafter, the space begins to live.</p>
+      <p>
+        And as time passes, the structure ceases to be just a designed object; it transforms into
+        a repository of memory, bearing the traces left by people, the events that have unfolded,
+        and the evolving ways in which it is used.
+      </p>
+    </div>
+  </section>
+
   <section class="border-t border-stone-light/70 px-6 py-12 md:px-10 md:py-20">
     <div class="mx-auto flex max-w-6xl flex-col gap-16 md:gap-24">
       {
@@ -59,3 +118,13 @@ const jsonLd = breadcrumbSchema([
     </div>
   </section>
 </BaseLayout>
+
+<style>
+  .prose-content :global(p) {
+    margin-top: 1.5rem;
+  }
+
+  .prose-content :global(p:first-child) {
+    margin-top: 0;
+  }
+</style>
