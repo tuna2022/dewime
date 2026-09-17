@@ -46,6 +46,7 @@ export const SITE = {
 export const NAV_LINKS = [
   { href: "/about", label: "About" },
   { href: "/non-places", label: "Non-Places" },
+  { href: "/design", label: "Design Memory" },
   { href: "/interior-projects", label: "Interior Projects" },
   { href: "/products", label: "Products Design" },
   { href: "/practice", label: "Practice" },

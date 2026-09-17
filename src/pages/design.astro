@@ -1,0 +1,120 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { SITE } from "../consts";
+import { breadcrumbSchema, articleSchema } from "../lib/schema";
+
+const description =
+  "On design memory — why preserving the reasoning behind past decisions, not just the drawings, turns experience into an active part of future design work.";
+
+const jsonLd = [
+  breadcrumbSchema([
+    { name: "Home", path: "/" },
+    { name: "Design Memory", path: "/design" },
+  ]),
+  articleSchema({
+    headline: "Design Memory",
+    description,
+    path: "/design",
+  }),
+];
+---
+
+<BaseLayout title="Design Memory" description={description} path="/design" jsonLd={jsonLd}>
+  <section class="px-6 pt-16 pb-10 md:px-10 md:pt-24">
+    <div class="mx-auto max-w-3xl">
+      <a href="/about" class="font-mono text-xs uppercase tracking-[0.14em] text-stone hover:text-ink">
+        ← About
+      </a>
+      <p class="coord-mark mt-6">Notes on memory</p>
+      <h1 class="mt-3 font-display text-4xl text-ink md:text-5xl">Design Memory</h1>
+      <p class="mt-6 text-lg text-ink/75">{description}</p>
+    </div>
+  </section>
+
+  <section class="px-6 pb-16 md:px-10 md:pb-24">
+    <div class="prose-content mx-auto max-w-3xl text-ink/85">
+      <p>
+        Design is often thought of as the act of creating something new. Yet, powerful design
+        draws sustenance not only from innovation but also from its relationship with the past.
+        When designing a product, space, exhibition, or communication system, the systematic
+        preservation of prior decisions, experiments, user behaviors, failures, and contextual
+        information renders the design process more informed. Therefore, building a design
+        memory is not merely about keeping an archive; it is about transforming past experience
+        into an active component of future decisions.
+      </p>
+      <p>
+        Design memory can consist of various layers. The first layer comprises drawings,
+        sketches, models, technical details, material choices, and production files. However,
+        these alone are insufficient. What is truly valuable is recording the reasons behind
+        these decisions. Why was a particular material chosen? Why was a solution abandoned? At
+        what point did the user encounter difficulties? Under what economic, cultural, or
+        technical constraints was the design developed? When the answers to these questions are
+        lost, only the final result remains. Yet, design knowledge often resides more in the
+        decision-making process than in the outcome itself.
+      </p>
+      <p>
+        Integrating this memory into the design process prevents the need to constantly start
+        from scratch on new projects. Designers can interpret past examples not merely as formal
+        references, but as a network of decisions. For instance, insights—such as how a
+        previously used display system affected visitor flow, which artworks caused issues with
+        a specific lighting solution, or what consequences a particular production detail yielded
+        in the field—can be transformed into directly applicable knowledge for new projects.
+      </p>
+      <p>
+        The crucial point here is that memory should not render the designer dependent on the
+        past. Memory should generate context, not a template. Instead of simply repeating old
+        solutions, one must understand the conditions under which those solutions emerged. In
+        this way, the designer does not copy the past; it generates a new decision by drawing
+        comparisons with the past.
+      </p>
+      <p>
+        Digital tools and artificial intelligence can further enhance this process. Hundreds of
+        project files, meeting notes, drawings, visuals, and technical documents can be linked to
+        create a searchable design memory. When a designer works on a new project, the system can
+        display decisions made, materials used, or issues encountered under similar past
+        conditions. Thus, the archive transforms from a passive repository into an active design
+        partner.
+      </p>
+      <p>
+        Ultimately, design memory serves as a decision-making infrastructure bridging the past
+        and the future. When well-established, it accelerates the design process, minimizes
+        redundancy, preserves institutional knowledge, and ensures that design relies not merely
+        on intuition but on accumulated experience. Design thus ceases to be a singular act of
+        creation; it evolves into a living system that continuously learns, updates itself, and
+        draws upon past experiences.
+      </p>
+    </div>
+
+    <div class="mx-auto mt-16 max-w-3xl border-t border-stone-light/70 pt-10">
+      <p class="coord-mark">Where this leads</p>
+      <p class="mt-3 max-w-xl text-ink/75">
+        It's why {SITE.name} keeps the reasoning behind a project, not just its drawings — every
+        decision on a new commission draws on what we learned building the last one.
+      </p>
+      <div class="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3">
+        <a
+          href="/practice"
+          class="inline-block bg-ink px-6 py-3 font-mono text-xs uppercase tracking-[0.14em] text-paper hover:bg-patina"
+        >
+          See our practice
+        </a>
+        <a
+          href="/non-places"
+          class="font-mono text-xs uppercase tracking-[0.14em] text-patina hover:underline"
+        >
+          Continue reading: Non-Places →
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .prose-content :global(p) {
+    margin-top: 1.5rem;
+  }
+
+  .prose-content :global(p:first-child) {
+    margin-top: 0;
+  }
+</style>

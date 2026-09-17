@@ -32,6 +32,67 @@ const jsonLd = breadcrumbSchema([
     </div>
   </section>
 
+  <section class="border-t border-stone-light/70 bg-paper px-6 py-16 md:px-10 md:py-24">
+    <div class="prose-content mx-auto max-w-3xl text-ink/85">
+      <p class="coord-mark">Notes on memory</p>
+      <p class="mt-6">
+        An object is not merely something to be used. Over time, a person forms a relationship
+        with the objects they touch, carry, keep, and use repeatedly in their daily life. A
+        chair, table, pen, watch, or cup may initially be nothing more than a functional product.
+        Yet, through use, it becomes scratched, worn, and altered in form, beginning to bear
+        traces of its owner's life. Thus, the object ceases to be a mere physical tool and
+        transforms into a part of lived experience.
+      </p>
+      <p>
+        This relationship is one of the most significant—yet often overlooked—aspects of product
+        design. A product's value lies not only in its form, ergonomics, or manufacturing
+        quality, but also in the bond it can forge with a person over time. We do not use certain
+        objects for years simply because they are technically superior; rather, those objects
+        have aged alongside us, become part of specific moments, and embedded themselves in our
+        personal histories.
+      </p>
+      <p>
+        In contrast, an increasing number of products today are designed to be "memory-less."
+        Instead of fostering a long-term relationship with the user, these products are built on
+        rapid consumption, easy replacement, and constant renewal. Their surfaces are
+        flawless—designed to conceal any signs of use—and when they break, they are replaced
+        rather than repaired. A few years later, a new model of the same product hits the market,
+        and the old one rapidly loses its value.
+      </p>
+      <p>
+        "Memory-less" product design implies more than just the creation of short-lived goods; at
+        a deeper level, it represents a design philosophy that precludes the product from
+        evolving over time or being personalized by the user. Traces left by the user are viewed
+        as flaws; scratches, discoloration, wear, and repairs are all deemed factors that
+        diminish the product's value. Yet, these traces are the very layers that constitute the
+        object's history. Scratches on the surface of an old wooden table, the altered shape of a
+        leather armchair used for years, or the patina that develops on a metal object over
+        time—all make the time the object has lived through visible. As each of these products
+        undergoes physical change, it simultaneously keeps a record of its relationship with the
+        user. In other words, the object carries memory within its very material.
+      </p>
+      <p>
+        A product devoid of memory, however, seeks to remain as free of a past as possible. It is
+        designed to be independent of the user, perpetually new, and interchangeable.
+        Consequently, the user struggles to form a strong bond with the object. Even if the loss
+        of a broken or worn-out product entails more than just the loss of a functional tool,
+        replacing it with a new one is incredibly easy.
+      </p>
+      <p>
+        Perhaps one of the key questions for the future of product design is this: Can an object
+        age alongside a human being? Can a designer envision not only the product's appearance on
+        day one but also its state ten years down the line?
+      </p>
+      <p>
+        Viewed in this light, product design is not merely about shaping an object; it is about
+        designing the relationship that object will forge with time. A product with memory does
+        not attempt to conceal its past. It embraces usage, undergoes transformation, and bears
+        the traces of a person's life. For the true value of certain objects emerges not at the
+        moment of their creation, but over the course of the time they live.
+      </p>
+    </div>
+  </section>
+
   <section class="border-t border-stone-light/70 px-6 py-12 md:px-10 md:py-20">
     <div class="mx-auto grid max-w-6xl gap-10 sm:grid-cols-2 lg:grid-cols-3">
       {
@@ -54,3 +115,13 @@ const jsonLd = breadcrumbSchema([
     </div>
   </section>
 </BaseLayout>
+
+<style>
+  .prose-content :global(p) {
+    margin-top: 1.5rem;
+  }
+
+  .prose-content :global(p:first-child) {
+    margin-top: 0;
+  }
+</style>
