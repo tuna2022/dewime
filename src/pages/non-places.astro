@@ -1,0 +1,113 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { SITE } from "../consts";
+import { breadcrumbSchema, articleSchema } from "../lib/schema";
+
+const description =
+  "On Marc Augé's concept of the 'non-place' — airports, malls and hotel rooms — and why a space only becomes a place once people inhabit it, leave their traces, and give it memory.";
+
+const jsonLd = [
+  breadcrumbSchema([
+    { name: "Home", path: "/" },
+    { name: "Non-Places", path: "/non-places" },
+  ]),
+  articleSchema({
+    headline: "Non-Places",
+    description,
+    path: "/non-places",
+  }),
+];
+---
+
+<BaseLayout title="Non-Places" description={description} path="/non-places" jsonLd={jsonLd}>
+  <section class="px-6 pt-16 pb-10 md:px-10 md:pt-24">
+    <div class="mx-auto max-w-3xl">
+      <a href="/about" class="font-mono text-xs uppercase tracking-[0.14em] text-stone hover:text-ink">
+        ← About
+      </a>
+      <p class="coord-mark mt-6">Notes on place</p>
+      <h1 class="mt-3 font-display text-4xl text-ink md:text-5xl">Non-Places</h1>
+      <p class="mt-6 text-lg text-ink/75">{description}</p>
+    </div>
+  </section>
+
+  <section class="px-6 pb-16 md:px-10 md:pb-24">
+    <div class="prose-content mx-auto max-w-3xl text-ink/85">
+      <p>
+        Much of modern life now takes place in spaces that do not belong to any specific
+        location. Airports, shopping malls, highways, hotels, metro stations, waiting lounges,
+        and chain stores are the most prominent examples of these. The French anthropologist
+        Marc Augé defines such areas as "non-places." This term does not describe a space that
+        is physically non-existent; rather, it refers to spaces that fail to establish a strong
+        connection with people, memory, and identity.
+      </p>
+      <p>
+        We can better understand this distinction if we consider that a place consists of more
+        than just walls, a floor, and a roof. People imbue the spaces they inhabit with
+        memories, stories, habits, and meanings. A neighborhood coffeehouse, a street where one
+        spent their childhood, the kitchen of a family home, or a workshop used for many years is
+        not merely a physical environment. In these spaces, the past and the present are linked.
+        Individuals can situate themselves there and form connections with other people, events,
+        and their own pasts. Thus, the space transforms into a vessel for memory.
+      </p>
+      <p>
+        A "non-place," conversely, often represents the opposite of this relationship. A person
+        at an airport is there not to live, but to travel elsewhere. A traveler on a highway
+        moves through the environment without engaging with it. A hotel room is used for a few
+        hours or days before being handed over to the next occupant. Shopping malls replicate
+        similar stores, signage, lighting, and circulation patterns across cities worldwide. In
+        these spaces, the individual becomes a transient user of a system rather than someone
+        belonging to a specific place.
+      </p>
+      <p>
+        For this reason, the concept of the "non-place" is closely linked to the idea of a lack
+        of memory. However, it is impossible to speak of a space that is truly devoid of memory.
+        People generate experiences in every environment they inhabit, and these experiences can
+        become part of their personal memory. A farewell at an airport can transform into an
+        incredibly powerful memory years later. Consequently, what often lacks memory is not the
+        individual's experience, but the narrative structure of the space itself. The space does
+        not reveal its past to the user; it renders the traces of previous users invisible.
+      </p>
+      <p>
+        Viewed from this perspective, the "non-place" represents the constantly renewing face of
+        the modern world. Signs, screens, wayfinding systems, security measures, and a
+        standardized design language dictate what the user must do: "pass through here," "wait
+        here," "scan your card," "proceed to the gate." Instead of forging a long-term
+        relationship with the space, the individual moves according to instructions.
+      </p>
+      <p>
+        Perhaps the real issue today is not that spaces physically resemble one another. What
+        matters more is that the relationship people form with spaces is becoming increasingly
+        transient. A place acquires meaning only when it establishes a connection with the past,
+        with people, and with experiences. When this bond begins to fray, spaces in different
+        parts of the world become interchangeable. Thus, a person may be present in a place
+        without truly belonging to it.
+      </p>
+    </div>
+
+    <div class="mx-auto mt-16 max-w-3xl border-t border-stone-light/70 pt-10">
+      <p class="coord-mark">Where this leads</p>
+      <p class="mt-3 max-w-xl text-ink/75">
+        It's why {SITE.name} designs spaces open to change, use, and transformation — so a
+        building can become a place, not a non-place, once the people who use it leave their
+        traces on it.
+      </p>
+      <a
+        href="/about"
+        class="mt-6 inline-block bg-ink px-6 py-3 font-mono text-xs uppercase tracking-[0.14em] text-paper hover:bg-patina"
+      >
+        Read our approach
+      </a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .prose-content :global(p) {
+    margin-top: 1.5rem;
+  }
+
+  .prose-content :global(p:first-child) {
+    margin-top: 0;
+  }
+</style>

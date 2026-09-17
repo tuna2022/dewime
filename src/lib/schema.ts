@@ -92,6 +92,28 @@ export function projectSchema(project: {
   };
 }
 
+export function articleSchema(article: {
+  headline: string;
+  description: string;
+  path: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: article.headline,
+    description: article.description,
+    url: new URL(article.path, SITE.domain).toString(),
+    author: {
+      "@type": "Organization",
+      name: SITE.name,
+    },
+    publisher: {
+      "@type": "Organization",
+      name: SITE.name,
+    },
+  };
+}
+
 export function productSchema(product: {
   title: string;
   material: string;
