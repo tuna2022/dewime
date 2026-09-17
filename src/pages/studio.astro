@@ -1,0 +1,95 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PlaceholderPlate from "../components/PlaceholderPlate.astro";
+import { SITE } from "../consts";
+import { breadcrumbSchema } from "../lib/schema";
+
+const jsonLd = breadcrumbSchema([
+  { name: "Home", path: "/" },
+  { name: "Studio", path: "/studio" },
+]);
+
+const stats = [
+  { label: "Founded", value: SITE.founded },
+  { label: "Projects delivered", value: "60+" },
+  { label: "Cities", value: String(SITE.areaServed.length) },
+  { label: "Studio team", value: "18" },
+];
+---
+
+<BaseLayout
+  title="Studio"
+  description={`${SITE.name} is an architecture and design-build studio based in ${SITE.address.city}, Türkiye, founded in ${SITE.founded}.`}
+  path="/studio"
+  jsonLd={jsonLd}
+>
+  <section class="px-6 pt-16 pb-12 md:px-10 md:pt-24">
+    <div class="mx-auto max-w-6xl">
+      <p class="coord-mark">Studio</p>
+      <h1 class="mt-4 max-w-2xl font-display text-4xl text-ink md:text-6xl">
+        A studio that stays with the building.
+      </h1>
+      <p class="mt-6 max-w-xl text-lg text-ink/75">
+        Founded in {SITE.founded} in {SITE.address.city}, {SITE.name} works across architecture,
+        interiors and construction — one team, responsible for a project from first sketch to
+        the day the keys are handed over.
+      </p>
+    </div>
+  </section>
+
+  <PlaceholderPlate
+    label={`${SITE.name} studio team`}
+    seed={40}
+    class="mx-auto aspect-[21/9] w-full max-w-6xl"
+  />
+
+  <section class="border-t border-stone-light/70 px-6 py-16 md:px-10 md:py-24">
+    <div class="mx-auto grid max-w-6xl gap-8 sm:grid-cols-2 lg:grid-cols-4">
+      {
+        stats.map((stat) => (
+          <div class="border-t border-stone-light/70 pt-4">
+            <p class="font-display text-3xl text-ink">{stat.value}</p>
+            <p class="mt-1 font-mono text-xs uppercase tracking-[0.1em] text-stone">{stat.label}</p>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="border-t border-stone-light/70 bg-paper px-6 py-16 md:px-10 md:py-24">
+    <div class="mx-auto grid max-w-6xl gap-12 md:grid-cols-2">
+      <div>
+        <p class="coord-mark">How we work</p>
+        <h2 class="mt-3 font-display text-2xl text-ink">Design and construction, one team</h2>
+        <p class="mt-4 text-ink/75">
+          Splitting design from construction is the single biggest source of budget overruns and
+          diluted intent on a building project. Keeping both under one roof means the person who
+          drew a detail is the person who can explain it to a contractor on site — and change it
+          on the spot if the site calls for it.
+        </p>
+      </div>
+      <div>
+        <p class="coord-mark">Where we work</p>
+        <h2 class="mt-3 font-display text-2xl text-ink">Based in Istanbul, working nationwide</h2>
+        <p class="mt-4 text-ink/75">
+          Our studio is in {SITE.address.district}, {SITE.address.city}. We take on projects
+          across {SITE.areaServed.join(", ")}, and consider other regions of Türkiye on a
+          case-by-case basis. <span lang="tr">Türkiye genelinde mimari tasarım ve uygulama.</span>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="border-t border-stone-light/70 px-6 py-16 text-center md:px-10 md:py-24">
+    <div class="mx-auto max-w-xl">
+      <p class="coord-mark justify-center">Get in touch</p>
+      <h2 class="mt-3 font-display text-3xl text-ink">Have a site in mind?</h2>
+      <a
+        href="/contact"
+        class="mt-6 inline-block bg-ink px-6 py-3 font-mono text-xs uppercase tracking-[0.14em] text-paper hover:bg-patina"
+      >
+        Start a project
+      </a>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,69 @@
+---
+import { SITE, NAV_LINKS } from "../consts";
+---
+
+<header
+  class="sticky top-0 z-50 border-b border-stone-light/70 bg-canvas/85 backdrop-blur"
+>
+  <div
+    class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 md:px-10"
+  >
+    <a href="/" class="flex flex-col leading-none">
+      <span class="coord-mark">{SITE.address.city}, {SITE.address.countryCode}</span>
+      <span class="font-display text-xl tracking-tight text-ink">{SITE.name}</span>
+    </a>
+
+    <nav class="hidden items-center gap-8 md:flex" aria-label="Primary">
+      {
+        NAV_LINKS.map((link) => (
+          <a
+            href={link.href}
+            class="font-mono text-xs uppercase tracking-[0.14em] text-stone transition-colors hover:text-ink"
+          >
+            {link.label}
+          </a>
+        ))
+      }
+    </nav>
+
+    <button
+      id="menu-toggle"
+      type="button"
+      class="flex flex-col gap-1.5 md:hidden"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+      aria-label="Toggle menu"
+    >
+      <span class="h-px w-6 bg-ink"></span>
+      <span class="h-px w-6 bg-ink"></span>
+    </button>
+  </div>
+
+  <nav
+    id="mobile-menu"
+    class="hidden flex-col gap-1 border-t border-stone-light/70 bg-canvas px-6 py-4 md:hidden"
+    aria-label="Primary mobile"
+  >
+    {
+      NAV_LINKS.map((link) => (
+        <a
+          href={link.href}
+          class="py-2 font-mono text-sm uppercase tracking-[0.14em] text-stone hover:text-ink"
+        >
+          {link.label}
+        </a>
+      ))
+    }
+  </nav>
+</header>
+
+<script>
+  const toggle = document.getElementById("menu-toggle");
+  const menu = document.getElementById("mobile-menu");
+
+  toggle?.addEventListener("click", () => {
+    const isOpen = menu?.classList.toggle("flex");
+    menu?.classList.toggle("hidden");
+    toggle.setAttribute("aria-expanded", String(Boolean(isOpen)));
+  });
+</script>

@@ -1,0 +1,109 @@
+---
+import { getCollection, render } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import PlaceholderPlate from "../../components/PlaceholderPlate.astro";
+import { breadcrumbSchema } from "../../lib/schema";
+
+export async function getStaticPaths() {
+  const services = await getCollection("services");
+  return services.map((service) => ({
+    params: { id: service.id },
+    props: { service },
+  }));
+}
+
+const { service } = Astro.props;
+const { Content } = await render(service);
+
+const jsonLd = breadcrumbSchema([
+  { name: "Home", path: "/" },
+  { name: "Services", path: "/services" },
+  { name: service.data.title, path: `/services/${service.id}` },
+]);
+---
+
+<BaseLayout
+  title={service.data.title}
+  description={service.data.summary}
+  path={`/services/${service.id}`}
+  jsonLd={jsonLd}
+>
+  <section class="px-6 pt-16 pb-10 md:px-10 md:pt-24">
+    <div class="mx-auto max-w-3xl">
+      <a href="/services" class="font-mono text-xs uppercase tracking-[0.14em] text-stone hover:text-ink">
+        ← All services
+      </a>
+      <p class="coord-mark mt-6" lang="tr">{service.data.titleTr}</p>
+      <h1 class="mt-3 font-display text-4xl text-ink md:text-5xl">{service.data.title}</h1>
+      <p class="mt-6 text-lg text-ink/75">{service.data.summary}</p>
+    </div>
+  </section>
+
+  <PlaceholderPlate
+    label={service.data.title}
+    seed={service.data.order + 10}
+    class="mx-auto aspect-[21/9] w-full max-w-6xl"
+  />
+
+  <section class="px-6 py-16 md:px-10 md:py-24">
+    <div class="prose-content mx-auto max-w-3xl text-ink/85">
+      <Content />
+    </div>
+
+    <div class="mx-auto mt-16 max-w-3xl border-t border-stone-light/70 pt-10">
+      <p class="coord-mark">Next step</p>
+      <p class="mt-3 max-w-xl text-ink/75">
+        Tell us about the site and the brief — we'll follow up with next steps and a rough
+        timeline.
+      </p>
+      <a
+        href="/contact"
+        class="mt-6 inline-block bg-ink px-6 py-3 font-mono text-xs uppercase tracking-[0.14em] text-paper hover:bg-patina"
+      >
+        Start a project
+      </a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .prose-content :global(h2) {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--color-ink);
+  }
+
+  .prose-content :global(p) {
+    margin-top: 1rem;
+  }
+
+  .prose-content :global(ul) {
+    margin-top: 1rem;
+    display: grid;
+    gap: 0.5rem;
+    list-style: none;
+    padding: 0;
+  }
+
+  .prose-content :global(li) {
+    padding-left: 1.25rem;
+    position: relative;
+  }
+
+  .prose-content :global(li::before) {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.6em;
+    width: 0.4rem;
+    height: 1px;
+    background: var(--color-bronze);
+  }
+
+  .prose-content :global(strong) {
+    color: var(--color-ink);
+    font-weight: 600;
+  }
+</style>

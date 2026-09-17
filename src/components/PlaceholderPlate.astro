@@ -1,0 +1,41 @@
+---
+// Abstract stand-in for project photography. Swap any <PlaceholderPlate />
+// for a real <img> once photography is available — the alt text says what
+// belongs in each slot.
+interface Props {
+  label: string;
+  class?: string;
+  seed?: number;
+}
+
+const { label, class: className = "", seed = 1 } = Astro.props;
+
+// Deterministic pseudo-random contour offsets so each plate looks distinct
+// without any client-side JS.
+const lines = Array.from({ length: 5 }, (_, i) => {
+  const n = (seed * 37 + i * 53) % 97;
+  const y = 15 + i * 18 + (n % 10);
+  const curve = 20 + (n % 40);
+  return `M -10 ${y} Q 50 ${y - curve / 2} 110 ${y}`;
+});
+---
+
+<div
+  class={`relative overflow-hidden bg-gradient-to-br from-stone-light/60 via-canvas to-stone/30 ${className}`}
+  role="img"
+  aria-label={`Placeholder — replace with photography of ${label}`}
+>
+  <svg
+    class="absolute inset-0 h-full w-full opacity-40"
+    viewBox="0 0 100 100"
+    preserveAspectRatio="none"
+    aria-hidden="true"
+  >
+    {lines.map((d) => (
+      <path d={d} fill="none" stroke="var(--color-bronze)" stroke-width="0.3" />
+    ))}
+  </svg>
+  <div class="absolute inset-0 flex items-end p-4">
+    <span class="coord-mark bg-canvas/70 px-2 py-1 backdrop-blur-sm">{label}</span>
+  </div>
+</div>

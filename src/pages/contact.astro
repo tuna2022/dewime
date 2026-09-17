@@ -1,0 +1,81 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { SITE } from "../consts";
+import { breadcrumbSchema } from "../lib/schema";
+
+const jsonLd = breadcrumbSchema([
+  { name: "Home", path: "/" },
+  { name: "Contact", path: "/contact" },
+]);
+---
+
+<BaseLayout
+  title="Contact"
+  description={`Get in touch with ${SITE.name} — email, call or visit the studio in ${SITE.address.district}, ${SITE.address.city}.`}
+  path="/contact"
+  jsonLd={jsonLd}
+>
+  <section class="px-6 pt-16 pb-12 md:px-10 md:pt-24">
+    <div class="mx-auto max-w-6xl">
+      <p class="coord-mark">Contact</p>
+      <h1 class="mt-4 max-w-2xl font-display text-4xl text-ink md:text-6xl">
+        Tell us about the site.
+      </h1>
+      <p class="mt-6 max-w-xl text-lg text-ink/75">
+        A few lines about the site, the brief and rough scope is enough to start — we reply to
+        every enquiry within two business days.
+        <span lang="tr" class="block italic">Projeniz hakkında bize yazın, iki iş günü içinde dönüş yapıyoruz.</span>
+      </p>
+    </div>
+  </section>
+
+  <section class="border-t border-stone-light/70 px-6 py-16 md:px-10 md:py-24">
+    <div class="mx-auto grid max-w-6xl gap-16 md:grid-cols-2">
+      <div class="space-y-10">
+        <div>
+          <p class="coord-mark">Email</p>
+          <a href={`mailto:${SITE.email}`} class="mt-2 block font-display text-2xl text-ink hover:text-patina">
+            {SITE.email}
+          </a>
+        </div>
+        <div>
+          <p class="coord-mark">Phone</p>
+          <a href={`tel:${SITE.phone.replace(/\s/g, "")}`} class="mt-2 block font-display text-2xl text-ink hover:text-patina">
+            {SITE.phoneDisplay}
+          </a>
+        </div>
+        <div>
+          <p class="coord-mark">WhatsApp</p>
+          <a href={SITE.whatsapp} target="_blank" rel="noopener" class="mt-2 block font-display text-2xl text-ink hover:text-patina">
+            Message the studio
+          </a>
+        </div>
+        <div>
+          <p class="coord-mark">Studio address</p>
+          <p class="mt-2 font-display text-2xl text-ink">
+            {SITE.address.street}<br />
+            {SITE.address.district}, {SITE.address.city}<br />
+            {SITE.address.country}
+          </p>
+        </div>
+      </div>
+
+      <div class="border border-stone-light/70 bg-paper p-8 md:p-10">
+        <p class="coord-mark">Before you write</p>
+        <p class="mt-3 text-ink/75">A note on these helps us reply with something useful the first time:</p>
+        <ul class="mt-4 space-y-2 text-ink/75">
+          <li>— the site's location and approximate size</li>
+          <li>— whether it's new-build, renovation or restoration</li>
+          <li>— roughly when you'd like to start construction</li>
+          <li>— any budget range you're working to</li>
+        </ul>
+        <a
+          href={`mailto:${SITE.email}?subject=${encodeURIComponent("New project enquiry")}`}
+          class="mt-8 inline-block bg-ink px-6 py-3 font-mono text-xs uppercase tracking-[0.14em] text-paper hover:bg-patina"
+        >
+          Email the studio
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,95 @@
+@import "tailwindcss";
+
+@theme {
+  /* Materials-inspired palette: limestone plaster, basalt ink, aged bronze, verdigris patina. */
+  --color-canvas: #edeae3;
+  --color-paper: #faf9f6;
+  --color-ink: #201d1a;
+  --color-stone: #a9a296;
+  --color-stone-light: #d8d3c8;
+  --color-patina: #435c50;
+  --color-patina-light: #5c7a6c;
+  --color-bronze: #8c6b4f;
+
+  --font-display: "Fraunces", "Iowan Old Style", serif;
+  --font-body: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+
+  --animate-reveal: reveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+
+  @keyframes reveal {
+    from {
+      opacity: 0;
+      transform: translateY(1.25rem);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-canvas);
+    color: var(--color-ink);
+    font-family: var(--font-body);
+  }
+
+  ::selection {
+    background-color: var(--color-patina);
+    color: var(--color-paper);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-patina);
+    outline-offset: 3px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  /* Blueprint-style coordinate mark: the recurring signature motif used at
+     section openings in place of generic numbered dividers. */
+  .coord-mark {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-stone);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .coord-mark::before {
+    content: "";
+    width: 0.5rem;
+    height: 0.5rem;
+    border: 1px solid var(--color-patina);
+    transform: rotate(45deg);
+    flex-shrink: 0;
+  }
+
+  .hairline {
+    border-color: var(--color-stone-light);
+  }
+}
