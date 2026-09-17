@@ -8,7 +8,6 @@
   --color-stone: #a9a296;
   --color-stone-light: #d8d3c8;
   --color-patina: #435c50;
-  --color-patina-light: #5c7a6c;
   --color-bronze: #8c6b4f;
 
   --font-display: "Fraunces", "Iowan Old Style", serif;
@@ -87,10 +86,6 @@
     border: 1px solid var(--color-patina);
     transform: rotate(45deg);
     flex-shrink: 0;
-  }
-
-  .hairline {
-    border-color: var(--color-stone-light);
   }
 
   /* Hover to preview a gallery image larger than its grid cell — used on

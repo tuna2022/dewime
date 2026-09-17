@@ -8,7 +8,7 @@ export const SITE = {
   tagline: "Architecture rooted in place",
   // English is the primary language; Turkish is layered in via place names,
   // structured data (areaServed, alternateName) and meta descriptions so
-  // Turkish-language searches still surface the site. See src/lib/seo.ts.
+  // Turkish-language searches still surface the site. See src/lib/schema.ts.
   domain: "https://www.memorialoci.com",
   description:
     "Memoria Loci is an architectural design and implementation studio delivering residential, commercial and restoration projects from concept to completion across Türkiye.",
