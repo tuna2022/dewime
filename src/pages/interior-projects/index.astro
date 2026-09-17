@@ -11,6 +11,30 @@ const jsonLd = breadcrumbSchema([
   { name: "Home", path: "/" },
   { name: "Interior Projects", path: "/interior-projects" },
 ]);
+
+const goldenHourGallery = [
+  { src: "living-room.jpg", alt: "Golden-hour living room with a city-skyline view through floor-to-ceiling glass", feature: true },
+  { src: "bedroom-skyline.jpg", alt: "Primary bedroom at golden hour with a skyline view", feature: true },
+  { src: "kitchen.jpg", alt: "Marble kitchen island at golden hour with skyline view beyond", feature: true },
+  { src: "living-room-vignette.jpg", alt: "Living room seating vignette in golden-hour light" },
+  { src: "coffee-table-vignette.jpg", alt: "Marble coffee table vignette with styled objects" },
+  { src: "bedroom-retreat.jpg", alt: "Bedroom retreat seating area at golden hour" },
+  { src: "kitchen-sunset.jpg", alt: "Kitchen at sunset with skyline silhouette" },
+  { src: "kitchen-island.jpg", alt: "Marble waterfall kitchen island with brass accents" },
+  { src: "bathroom.jpg", alt: "Spa-style marble bathroom at golden hour" },
+  { src: "walk-in-closet.jpg", alt: "Walk-in closet with warm evening light" },
+  { src: "reading-nook.jpg", alt: "Reading nook styled with warm light" },
+  { src: "kids-bedroom.jpg", alt: "Sunlit children's bedroom" },
+  { src: "brass-lamp-console.jpg", alt: "Brass lamp detail on a marble console" },
+  { src: "foyer-console.jpg", alt: "Entry foyer with marble console and skyline view beyond" },
+  { src: "floral-vignette.jpg", alt: "Floral still life vignette in sunlit interior" },
+] as const;
+
+const goldenHourDetails = [
+  { src: "construction-detail/kitchen-island-blueprint.jpg", alt: "Construction drawing for the marble kitchen island" },
+  { src: "construction-detail/bookshelf-led-detail.jpg", alt: "LED joinery detail drawing for a built-in bookshelf" },
+  { src: "construction-detail/console-technical-drawing.jpg", alt: "Technical drawing for a marble console table" },
+] as const;
 ---
 
 <BaseLayout
@@ -159,6 +183,72 @@ const jsonLd = breadcrumbSchema([
         <span lang="tr" class="block normal-case not-italic tracking-normal">
           Bu görseller yapay zekâ ile üretilmiştir; hafızasız bir mekân tasarımı çalışmasıdır,
           uygulanmış bir proje değildir.
+        </span>
+      </p>
+    </div>
+  </section>
+
+  <section class="border-t border-stone-light/70 px-6 py-16 md:px-10 md:py-24">
+    <div class="mx-auto max-w-6xl">
+      <p class="coord-mark">Concept study</p>
+      <h2 class="mt-3 font-display text-3xl text-ink md:text-4xl">Golden Hour Skyline</h2>
+
+      <div class="prose-content mt-6 max-w-2xl text-ink/85">
+        <p>
+          This apartment appears complete, flawless, and perfectly arranged; yet, it lacks a
+          history of its own. Furniture has been selected, surfaces finished, lighting schemes
+          established, and every detail resolved within a cohesive aesthetic framework. Despite
+          this, the space does not yet bear the traces of its inhabitants.
+        </p>
+        <p>
+          For a home's memory is not something handed over alongside the design. Memory is
+          forged through evenings spent on the same sofa, habits repeated in the kitchen, a
+          photograph hung on the wall later on, marks left by children, and the way belongings
+          evolve over time.
+        </p>
+        <p>
+          Therefore, we view this apartment not as a finished space, but as a foundation whose
+          memory has yet to begin. Design merely sets the initial conditions; it is the life
+          lived within that will truly complete the home.
+        </p>
+      </div>
+
+      <div class="mt-10 grid grid-cols-2 gap-4 md:grid-cols-4 md:auto-rows-[180px] md:grid-flow-dense md:gap-6">
+        {
+          goldenHourGallery.map((img) => (
+            <img
+              src={`/images/interior-projects/golden-hour-skyline/${img.src}`}
+              alt={img.alt}
+              class={`aspect-[4/3] h-full w-full object-cover ${
+                "feature" in img && img.feature
+                  ? "col-span-2 aspect-auto md:row-span-2"
+                  : ""
+              }`}
+              loading="lazy"
+            />
+          ))
+        }
+      </div>
+
+      <p class="mt-16 coord-mark">Construction detail</p>
+      <div class="mt-6 grid grid-cols-1 gap-6 md:grid-cols-3">
+        {
+          goldenHourDetails.map((img) => (
+            <img
+              src={`/images/interior-projects/golden-hour-skyline/${img.src}`}
+              alt={img.alt}
+              class="aspect-[4/3] w-full border border-stone-light/70 object-cover"
+              loading="lazy"
+            />
+          ))
+        }
+      </div>
+
+      <p class="mt-10 max-w-2xl font-mono text-xs uppercase tracking-[0.08em] text-stone">
+        These images are AI-generated — a concept study, not a built project.
+        <span lang="tr" class="block normal-case not-italic tracking-normal">
+          Bu görseller yapay zekâ ile üretilmiştir; bir konsept çalışmasıdır, uygulanmış bir
+          proje değildir.
         </span>
       </p>
     </div>
