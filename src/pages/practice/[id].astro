@@ -5,43 +5,43 @@ import PlaceholderPlate from "../../components/PlaceholderPlate.astro";
 import { breadcrumbSchema } from "../../lib/schema";
 
 export async function getStaticPaths() {
-  const services = await getCollection("services");
-  return services.map((service) => ({
-    params: { id: service.id },
-    props: { service },
+  const practice = await getCollection("practice");
+  return practice.map((discipline) => ({
+    params: { id: discipline.id },
+    props: { discipline },
   }));
 }
 
-const { service } = Astro.props;
-const { Content } = await render(service);
+const { discipline } = Astro.props;
+const { Content } = await render(discipline);
 
 const jsonLd = breadcrumbSchema([
   { name: "Home", path: "/" },
-  { name: "Services", path: "/services" },
-  { name: service.data.title, path: `/services/${service.id}` },
+  { name: "Practice", path: "/practice" },
+  { name: discipline.data.title, path: `/practice/${discipline.id}` },
 ]);
 ---
 
 <BaseLayout
-  title={service.data.title}
-  description={service.data.summary}
-  path={`/services/${service.id}`}
+  title={discipline.data.title}
+  description={discipline.data.summary}
+  path={`/practice/${discipline.id}`}
   jsonLd={jsonLd}
 >
   <section class="px-6 pt-16 pb-10 md:px-10 md:pt-24">
     <div class="mx-auto max-w-3xl">
-      <a href="/services" class="font-mono text-xs uppercase tracking-[0.14em] text-stone hover:text-ink">
-        ← All services
+      <a href="/practice" class="font-mono text-xs uppercase tracking-[0.14em] text-stone hover:text-ink">
+        ← All disciplines
       </a>
-      <p class="coord-mark mt-6" lang="tr">{service.data.titleTr}</p>
-      <h1 class="mt-3 font-display text-4xl text-ink md:text-5xl">{service.data.title}</h1>
-      <p class="mt-6 text-lg text-ink/75">{service.data.summary}</p>
+      <p class="coord-mark mt-6" lang="tr">{discipline.data.titleTr}</p>
+      <h1 class="mt-3 font-display text-4xl text-ink md:text-5xl">{discipline.data.title}</h1>
+      <p class="mt-6 text-lg text-ink/75">{discipline.data.summary}</p>
     </div>
   </section>
 
   <PlaceholderPlate
-    label={service.data.title}
-    seed={service.data.order + 10}
+    label={discipline.data.title}
+    seed={discipline.data.order + 10}
     class="mx-auto aspect-[21/9] w-full max-w-6xl"
   />
 

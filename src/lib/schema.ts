@@ -78,7 +78,7 @@ export function projectSchema(project: {
     "@context": "https://schema.org",
     "@type": "CreativeWork",
     name: project.title,
-    about: `Architecture project in ${project.city}, Türkiye`,
+    about: `Interior architecture project in ${project.city}, Türkiye`,
     dateCreated: String(project.year),
     description: project.summary,
     url: new URL(project.path, SITE.domain).toString(),
@@ -88,6 +88,30 @@ export function projectSchema(project: {
     },
     ...(project.image
       ? { image: new URL(project.image, SITE.domain).toString() }
+      : {}),
+  };
+}
+
+export function productSchema(product: {
+  title: string;
+  material: string;
+  summary: string;
+  path: string;
+  image?: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: product.title,
+    description: product.summary,
+    material: product.material,
+    url: new URL(product.path, SITE.domain).toString(),
+    brand: {
+      "@type": "Brand",
+      name: SITE.name,
+    },
+    ...(product.image
+      ? { image: new URL(product.image, SITE.domain).toString() }
       : {}),
   };
 }

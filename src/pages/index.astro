@@ -6,9 +6,11 @@ import { SITE } from "../consts";
 import { faqSchema } from "../lib/schema";
 import { stripMarkdown } from "../lib/text";
 
-const services = (await getCollection("services")).sort((a, b) => a.data.order - b.data.order);
-const allProjects = (await getCollection("projects")).sort((a, b) => a.data.order - b.data.order);
+const practice = (await getCollection("practice")).sort((a, b) => a.data.order - b.data.order);
+const allProjects = (await getCollection("interiorProjects")).sort((a, b) => a.data.order - b.data.order);
 const featuredProjects = allProjects.filter((p) => p.data.featured).slice(0, 3);
+const allProducts = (await getCollection("products")).sort((a, b) => a.data.order - b.data.order);
+const featuredProducts = allProducts.filter((p) => p.data.featured).slice(0, 3);
 const faqItems = (await getCollection("faq")).sort((a, b) => a.data.order - b.data.order).slice(0, 4);
 const faqRendered = await Promise.all(faqItems.map((item) => render(item)));
 
@@ -51,7 +53,7 @@ const faqJsonLd = faqSchema(
         style="animation-delay: 240ms; opacity: 0;"
       >
         <a
-          href="/projects"
+          href="/interior-projects"
           class="bg-ink px-6 py-3 font-mono text-xs uppercase tracking-[0.14em] text-paper transition-colors hover:bg-patina"
         >
           View projects
@@ -91,28 +93,28 @@ const faqJsonLd = faqSchema(
     </div>
   </section>
 
-  <!-- Services -->
+  <!-- Practice -->
   <section class="border-t border-stone-light/70 bg-paper px-6 py-20 md:px-10 md:py-28">
     <div class="mx-auto max-w-6xl">
       <div class="flex items-baseline justify-between gap-4">
-        <p class="coord-mark">Services</p>
-        <a href="/services" class="font-mono text-xs uppercase tracking-[0.14em] text-stone hover:text-ink">
-          All services →
+        <p class="coord-mark">Practice</p>
+        <a href="/practice" class="font-mono text-xs uppercase tracking-[0.14em] text-stone hover:text-ink">
+          All disciplines →
         </a>
       </div>
       <div class="mt-10 grid gap-px overflow-hidden border border-stone-light/70 bg-stone-light/70 md:grid-cols-2">
         {
-          services.map((service) => (
+          practice.map((discipline) => (
             <a
-              href={`/services/${service.id}`}
+              href={`/practice/${discipline.id}`}
               class="group flex flex-col justify-between gap-8 bg-paper p-8 transition-colors hover:bg-canvas md:p-10"
             >
               <div>
-                <h3 class="font-display text-2xl text-ink">{service.data.title}</h3>
+                <h3 class="font-display text-2xl text-ink">{discipline.data.title}</h3>
                 <p class="mt-1 font-mono text-xs uppercase tracking-[0.1em] text-stone" lang="tr">
-                  {service.data.titleTr}
+                  {discipline.data.titleTr}
                 </p>
-                <p class="mt-4 text-ink/75">{service.data.summary}</p>
+                <p class="mt-4 text-ink/75">{discipline.data.summary}</p>
               </div>
               <span class="font-mono text-xs uppercase tracking-[0.14em] text-patina group-hover:underline">
                 Learn more →
@@ -124,19 +126,19 @@ const faqJsonLd = faqSchema(
     </div>
   </section>
 
-  <!-- Featured projects -->
+  <!-- Featured interior projects -->
   <section class="border-t border-stone-light/70 px-6 py-20 md:px-10 md:py-28">
     <div class="mx-auto max-w-6xl">
       <div class="flex items-baseline justify-between gap-4">
-        <p class="coord-mark">Selected projects</p>
-        <a href="/projects" class="font-mono text-xs uppercase tracking-[0.14em] text-stone hover:text-ink">
+        <p class="coord-mark">Selected interior projects</p>
+        <a href="/interior-projects" class="font-mono text-xs uppercase tracking-[0.14em] text-stone hover:text-ink">
           All projects →
         </a>
       </div>
       <div class="mt-10 grid gap-10 md:grid-cols-3">
         {
           featuredProjects.map((project, i) => (
-            <a href={`/projects/${project.id}`} class="group block">
+            <a href={`/interior-projects/${project.id}`} class="group block">
               <PlaceholderPlate
                 label={`${project.data.title}, ${project.data.city}`}
                 seed={i + 2}
@@ -147,6 +149,37 @@ const faqJsonLd = faqSchema(
               </p>
               <h3 class="mt-1 font-display text-xl text-ink group-hover:text-patina">
                 {project.data.title}
+              </h3>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured products -->
+  <section class="border-t border-stone-light/70 bg-paper px-6 py-20 md:px-10 md:py-28">
+    <div class="mx-auto max-w-6xl">
+      <div class="flex items-baseline justify-between gap-4">
+        <p class="coord-mark">Products design</p>
+        <a href="/products" class="font-mono text-xs uppercase tracking-[0.14em] text-stone hover:text-ink">
+          All products →
+        </a>
+      </div>
+      <div class="mt-10 grid gap-10 md:grid-cols-3">
+        {
+          featuredProducts.map((product, i) => (
+            <a href={`/products/${product.id}`} class="group block">
+              <PlaceholderPlate
+                label={product.data.title}
+                seed={i + 62}
+                class="aspect-[4/5] w-full"
+              />
+              <p class="mt-4 font-mono text-xs uppercase tracking-[0.1em] text-stone">
+                {product.data.category} · {product.data.year}
+              </p>
+              <h3 class="mt-1 font-display text-xl text-ink group-hover:text-patina">
+                {product.data.title}
               </h3>
             </a>
           ))

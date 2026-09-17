@@ -5,28 +5,29 @@ import PlaceholderPlate from "../../components/PlaceholderPlate.astro";
 import { SITE } from "../../consts";
 import { breadcrumbSchema } from "../../lib/schema";
 
-const projects = (await getCollection("projects")).sort((a, b) => b.data.year - a.data.year);
+const products = (await getCollection("products")).sort((a, b) => a.data.order - b.data.order);
 
 const jsonLd = breadcrumbSchema([
   { name: "Home", path: "/" },
-  { name: "Projects", path: "/projects" },
+  { name: "Products Design", path: "/products" },
 ]);
 ---
 
 <BaseLayout
-  title="Projects"
-  description={`Residential, commercial and restoration projects by ${SITE.name} across ${SITE.areaServed.join(", ")} and beyond.`}
-  path="/projects"
+  title="Products Design"
+  description={`Furniture, lighting and object design by ${SITE.name}, developed alongside our architectural and interior commissions.`}
+  path="/products"
   jsonLd={jsonLd}
 >
   <section class="px-6 pt-16 pb-12 md:px-10 md:pt-24">
     <div class="mx-auto max-w-6xl">
-      <p class="coord-mark">Projects</p>
+      <p class="coord-mark">Products Design</p>
       <h1 class="mt-4 max-w-2xl font-display text-4xl text-ink md:text-6xl">
-        Built work across Türkiye.
+        Objects that started on site.
       </h1>
       <p class="mt-6 max-w-xl text-lg text-ink/75">
-        {SITE.areaServed.join(" · ")}
+        Furniture, lighting and objects developed out of details, materials and offcuts from our
+        architecture and interiors work — not designed separately from it.
       </p>
     </div>
   </section>
@@ -34,18 +35,18 @@ const jsonLd = breadcrumbSchema([
   <section class="border-t border-stone-light/70 px-6 py-12 md:px-10 md:py-20">
     <div class="mx-auto grid max-w-6xl gap-10 sm:grid-cols-2 lg:grid-cols-3">
       {
-        projects.map((project, i) => (
-          <a href={`/projects/${project.id}`} class="group block">
+        products.map((product, i) => (
+          <a href={`/products/${product.id}`} class="group block">
             <PlaceholderPlate
-              label={`${project.data.title}, ${project.data.city}`}
-              seed={i + 20}
+              label={product.data.title}
+              seed={i + 60}
               class="aspect-[4/5] w-full"
             />
             <p class="mt-4 font-mono text-xs uppercase tracking-[0.1em] text-stone">
-              {project.data.city} · {project.data.year} · {project.data.category}
+              {product.data.category} · {product.data.year}
             </p>
             <h2 class="mt-1 font-display text-xl text-ink group-hover:text-patina">
-              {project.data.title}
+              {product.data.title}
             </h2>
           </a>
         ))

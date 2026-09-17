@@ -6,8 +6,9 @@ import { SITE } from "../consts";
 // AI assistants and answer engines, generated from the same content
 // collections as the HTML pages so it can't drift out of sync.
 export const GET: APIRoute = async () => {
-  const services = (await getCollection("services")).sort((a, b) => a.data.order - b.data.order);
-  const projects = (await getCollection("projects")).sort((a, b) => a.data.order - b.data.order);
+  const practice = (await getCollection("practice")).sort((a, b) => a.data.order - b.data.order);
+  const projects = (await getCollection("interiorProjects")).sort((a, b) => a.data.order - b.data.order);
+  const products = (await getCollection("products")).sort((a, b) => a.data.order - b.data.order);
   const faq = (await getCollection("faq")).sort((a, b) => a.data.order - b.data.order);
 
   const lines = [
@@ -17,21 +18,26 @@ export const GET: APIRoute = async () => {
     "",
     `${SITE.name} (Turkish: mimari tasarım ve uygulama stüdyosu) is based in ${SITE.address.district}, ${SITE.address.city}, Türkiye, and serves ${SITE.areaServed.join(", ")}.`,
     "",
-    "## Services",
-    ...services.map(
-      (s) => `- [${s.data.title} / ${s.data.titleTr}](${SITE.domain}/services/${s.id}): ${s.data.summary}`
+    "## Practice",
+    ...practice.map(
+      (s) => `- [${s.data.title} / ${s.data.titleTr}](${SITE.domain}/practice/${s.id}): ${s.data.summary}`
     ),
     "",
-    "## Projects",
+    "## Interior Projects",
     ...projects.map(
-      (p) => `- [${p.data.title}, ${p.data.city} (${p.data.year})](${SITE.domain}/projects/${p.id}): ${p.data.summary}`
+      (p) => `- [${p.data.title}, ${p.data.city} (${p.data.year})](${SITE.domain}/interior-projects/${p.id}): ${p.data.summary}`
+    ),
+    "",
+    "## Products Design",
+    ...products.map(
+      (p) => `- [${p.data.title} (${p.data.year})](${SITE.domain}/products/${p.id}): ${p.data.summary}`
     ),
     "",
     "## Frequently asked questions",
     ...faq.map((f) => `- [${f.data.question}](${SITE.domain}/#faq)`),
     "",
-    "## Studio",
-    `- [Studio](${SITE.domain}/studio): background, team and how ${SITE.name} works.`,
+    "## About",
+    `- [About](${SITE.domain}/about): background, team and how ${SITE.name} works.`,
     `- [Contact](${SITE.domain}/contact): ${SITE.email}, ${SITE.phoneDisplay}.`,
   ];
 

@@ -5,7 +5,7 @@ import PlaceholderPlate from "../../components/PlaceholderPlate.astro";
 import { breadcrumbSchema, projectSchema } from "../../lib/schema";
 
 export async function getStaticPaths() {
-  const projects = await getCollection("projects");
+  const projects = await getCollection("interiorProjects");
   return projects.map((project) => ({
     params: { id: project.id },
     props: { project },
@@ -18,15 +18,15 @@ const { Content } = await render(project);
 const jsonLd = [
   breadcrumbSchema([
     { name: "Home", path: "/" },
-    { name: "Projects", path: "/projects" },
-    { name: project.data.title, path: `/projects/${project.id}` },
+    { name: "Interior Projects", path: "/interior-projects" },
+    { name: project.data.title, path: `/interior-projects/${project.id}` },
   ]),
   projectSchema({
     title: project.data.title,
     city: project.data.city,
     year: project.data.year,
     summary: project.data.summary,
-    path: `/projects/${project.id}`,
+    path: `/interior-projects/${project.id}`,
   }),
 ];
 ---
@@ -34,13 +34,13 @@ const jsonLd = [
 <BaseLayout
   title={`${project.data.title} — ${project.data.city}`}
   description={project.data.summary}
-  path={`/projects/${project.id}`}
+  path={`/interior-projects/${project.id}`}
   jsonLd={jsonLd}
 >
   <section class="px-6 pt-16 pb-8 md:px-10 md:pt-24">
     <div class="mx-auto max-w-6xl">
-      <a href="/projects" class="font-mono text-xs uppercase tracking-[0.14em] text-stone hover:text-ink">
-        ← All projects
+      <a href="/interior-projects" class="font-mono text-xs uppercase tracking-[0.14em] text-stone hover:text-ink">
+        ← All interior projects
       </a>
       <div class="mt-6 flex flex-wrap items-end justify-between gap-6">
         <div>

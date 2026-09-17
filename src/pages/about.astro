@@ -6,26 +6,26 @@ import { breadcrumbSchema } from "../lib/schema";
 
 const jsonLd = breadcrumbSchema([
   { name: "Home", path: "/" },
-  { name: "Studio", path: "/studio" },
+  { name: "About", path: "/about" },
 ]);
 
 const stats = [
   { label: "Founded", value: SITE.founded },
   { label: "Projects delivered", value: "60+" },
   { label: "Cities", value: String(SITE.areaServed.length) },
-  { label: "Studio team", value: "18" },
+  { label: "Team", value: "18" },
 ];
 ---
 
 <BaseLayout
-  title="Studio"
+  title="About"
   description={`${SITE.name} is an architecture and design-build studio based in ${SITE.address.city}, Türkiye, founded in ${SITE.founded}.`}
-  path="/studio"
+  path="/about"
   jsonLd={jsonLd}
 >
   <section class="px-6 pt-16 pb-12 md:px-10 md:pt-24">
     <div class="mx-auto max-w-6xl">
-      <p class="coord-mark">Studio</p>
+      <p class="coord-mark">About</p>
       <h1 class="mt-4 max-w-2xl font-display text-4xl text-ink md:text-6xl">
         A studio that stays with the building.
       </h1>
