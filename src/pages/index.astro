@@ -67,12 +67,34 @@ const faqJsonLd = faqSchema(
       </div>
     </div>
 
-    <PlaceholderPlate
-      label={`${SITE.name} — studio work, ${SITE.address.city}`}
-      seed={1}
-      class="mt-16 aspect-[16/9] w-full md:mt-20 md:aspect-[21/9]"
-    />
+    <div class="relative mt-16 aspect-[16/9] w-full overflow-hidden md:mt-20 md:aspect-[21/9]">
+      <video
+        id="hero-video"
+        class="h-full w-full object-cover"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="auto"
+        poster="/videos/hero-poster.jpg"
+      >
+        <source src="/videos/luxury-interior-loop.mp4" type="video/mp4" />
+      </video>
+      <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/30 via-transparent to-transparent">
+      </div>
+      <p class="coord-mark absolute bottom-4 left-4 bg-canvas/70 px-2 py-1 backdrop-blur-sm">
+        {SITE.name} — studio work, {SITE.address.city}
+      </p>
+    </div>
   </section>
+
+  <script>
+    const heroVideo = document.getElementById("hero-video") as HTMLVideoElement | null;
+    if (heroVideo && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      heroVideo.pause();
+      heroVideo.removeAttribute("autoplay");
+    }
+  </script>
 
   <!-- Philosophy -->
   <section class="border-t border-stone-light/70 px-6 py-20 md:px-10 md:py-28">
