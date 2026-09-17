@@ -103,7 +103,7 @@
   }
 
   .hover-zoom:hover {
-    transform: scale(1.15);
+    transform: scale(1.4);
     z-index: 10;
   }
 }
