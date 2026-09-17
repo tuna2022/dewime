@@ -34,6 +34,17 @@ const goldenHourDetails = [
   { src: "construction-detail/bookshelf-led-detail.jpg", alt: "LED joinery detail drawing for a built-in bookshelf" },
   { src: "construction-detail/console-technical-drawing.jpg", alt: "Technical drawing for a marble console table" },
 ] as const;
+
+const sunlitCoastalGallery = [
+  { src: "living-room.jpg", alt: "Sunlit coastal living room opening onto the sea, with a stone fireplace and linen sofa", feature: true },
+  { src: "terrace.jpg", alt: "Sea-view terrace with wicker furniture and olive trees", feature: true },
+  { src: "kitchen.jpg", alt: "Coastal kitchen with light-colored walls and natural wood cabinetry", feature: true },
+  { src: "bedroom-retreat.jpg", alt: "Sunlit bedroom retreat with linen bedding and blue accents" },
+  { src: "bathroom.jpg", alt: "Coastal bathroom with stone surfaces and natural light" },
+  { src: "entryway.jpg", alt: "Entryway by the sea with distressed wood and wicker details" },
+  { src: "lounge.jpg", alt: "Coastal retreat lounge with natural materials and warm textures" },
+  { src: "kitchen-pendants.jpg", alt: "Wicker pendant lights over a coastal kitchen counter" },
+] as const;
 ---
 
 <BaseLayout
@@ -237,6 +248,49 @@ const goldenHourDetails = [
               src={`/images/interior-projects/golden-hour-skyline/${img.src}`}
               alt={img.alt}
               class="hover-zoom aspect-[4/3] w-full border border-stone-light/70 object-cover"
+              loading="lazy"
+            />
+          ))
+        }
+      </div>
+
+      <p class="mt-10 max-w-2xl font-mono text-xs uppercase tracking-[0.08em] text-stone">
+        These images are AI-generated — a concept study, not a built project.
+        <span lang="tr" class="block normal-case not-italic tracking-normal">
+          Bu görseller yapay zekâ ile üretilmiştir; bir konsept çalışmasıdır, uygulanmış bir
+          proje değildir.
+        </span>
+      </p>
+    </div>
+  </section>
+
+  <section class="border-t border-stone-light/70 bg-paper px-6 py-16 md:px-10 md:py-24">
+    <div class="mx-auto max-w-6xl">
+      <p class="coord-mark">Concept study</p>
+      <h2 class="mt-3 font-display text-3xl text-ink md:text-4xl">Sunlit Mediterranean Coastal</h2>
+
+      <p class="mt-6 max-w-2xl text-ink/85">
+        The interior design of this home blends the simplicity of coastal living with natural
+        materials and warm textures. Light-colored walls, stone surfaces, distressed wood
+        furniture, linen fabrics, and wicker details lend the space a calm, timeless, and
+        lived-in character. While blue tones establish a visual connection to the sea, expansive
+        openings and abundant natural light blur the boundary between the interior and the
+        veranda. The overall approach focuses on creating a living environment that is natural,
+        comfortable, and capable of developing its own unique history over time, rather than one
+        that is ostentatious.
+      </p>
+
+      <div class="mt-10 grid grid-cols-2 gap-4 md:grid-cols-4 md:auto-rows-[200px] md:grid-flow-dense md:gap-6">
+        {
+          sunlitCoastalGallery.map((img) => (
+            <img
+              src={`/images/interior-projects/sunlit-mediterranean-coastal/${img.src}`}
+              alt={img.alt}
+              class={`hover-zoom aspect-[4/3] h-full w-full object-cover ${
+                "feature" in img && img.feature
+                  ? "col-span-2 aspect-auto md:row-span-2"
+                  : ""
+              }`}
               loading="lazy"
             />
           ))
