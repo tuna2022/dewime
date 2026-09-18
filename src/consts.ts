@@ -5,7 +5,7 @@
 export const SITE = {
   name: "Design Without Memories",
   legalName: "Design Without Memories Architecture Studio",
-  tagline: "Architecture rooted in place",
+  tagline: "Spaces begin without memory",
   // English is the primary language; Turkish is layered in via place names,
   // structured data (areaServed, alternateName) and meta descriptions so
   // Turkish-language searches still surface the site. See src/lib/schema.ts.
