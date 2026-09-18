@@ -11,6 +11,15 @@ const jsonLd = breadcrumbSchema([
   { name: "Home", path: "/" },
   { name: "Practice", path: "/practice" },
 ]);
+
+const practiceGallery = [
+  { src: "night-workshop-assembly.jpg", alt: "Two craftsmen assembling a walnut and brass reception desk in a night workshop", feature: true },
+  { src: "craftsman-arranging-necklace.jpg", alt: "A gloved craftsman arranging a diamond necklace inside a bronze-framed display case", feature: true },
+  { src: "workshop-finishing-touches.jpg", alt: "Craftsman annotating construction drawings at a workshop bench, a jewelry display cabinet behind him" },
+  { src: "handcrafted-walnut-cabinet.jpg", alt: "Hand-fitting a dovetail joint on a walnut display cabinet" },
+  { src: "walnut-bronze-craftsmanship.jpg", alt: "Fitting brass hardware to a walnut cabinet drawer" },
+  { src: "tig-welding-display-frame.jpg", alt: "TIG welding the bronze frame of a jewelry display case" },
+] as const;
 ---
 
 <BaseLayout
@@ -33,6 +42,34 @@ const jsonLd = breadcrumbSchema([
   </section>
 
   <section class="border-t border-stone-light/70 bg-paper px-6 py-16 md:px-10 md:py-24">
+    <div class="mx-auto mb-16 max-w-6xl">
+      <div class="grid grid-cols-2 gap-4 md:grid-cols-4 md:auto-rows-[200px] md:grid-flow-dense md:gap-6">
+        {
+          practiceGallery.map((img) => (
+            <img
+              src={`/images/practice/${img.src}`}
+              alt={img.alt}
+              class={`hover-zoom aspect-[4/3] h-full w-full object-cover ${
+                "feature" in img && img.feature
+                  ? "col-span-2 aspect-auto md:row-span-2"
+                  : ""
+              }`}
+              loading="lazy"
+            />
+          ))
+        }
+      </div>
+
+      <p class="mt-6 max-w-2xl font-mono text-xs uppercase tracking-[0.08em] text-stone">
+        These images are AI-generated — a study of the construction site and workshop, not
+        documentary photography.
+        <span lang="tr" class="block normal-case not-italic tracking-normal">
+          Bu görseller yapay zekâ ile üretilmiştir; şantiye ve atölyeye dair bir çalışmadır,
+          belgesel fotoğraf değildir.
+        </span>
+      </p>
+    </div>
+
     <div class="prose-content mx-auto max-w-3xl text-ink/85">
       <p class="coord-mark">Notes on memory</p>
       <p class="mt-6">
@@ -96,11 +133,24 @@ const jsonLd = breadcrumbSchema([
       {
         practice.map((discipline, i) => (
           <article class="grid gap-8 md:grid-cols-2 md:items-center md:gap-16">
-            <PlaceholderPlate
-              label={discipline.data.title}
-              seed={i + 5}
-              class={`aspect-[4/3] w-full ${i % 2 === 1 ? "md:order-2" : ""}`}
-            />
+            {
+              discipline.data.heroImage ? (
+                <div class={`aspect-[4/3] w-full overflow-hidden ${i % 2 === 1 ? "md:order-2" : ""}`}>
+                  <img
+                    src={discipline.data.heroImage}
+                    alt={discipline.data.summary}
+                    class="hover-zoom h-full w-full object-cover"
+                    loading="lazy"
+                  />
+                </div>
+              ) : (
+                <PlaceholderPlate
+                  label={discipline.data.title}
+                  seed={i + 5}
+                  class={`aspect-[4/3] w-full ${i % 2 === 1 ? "md:order-2" : ""}`}
+                />
+              )
+            }
             <div>
               <p class="coord-mark">0{i + 1} — <span lang="tr">{discipline.data.titleTr}</span></p>
               <h2 class="mt-3 font-display text-3xl text-ink">{discipline.data.title}</h2>

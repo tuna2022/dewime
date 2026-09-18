@@ -32,6 +32,40 @@ const jsonLd = breadcrumbSchema([
     </div>
   </section>
 
+  <section class="border-t border-stone-light/70 px-6 py-12 md:px-10 md:py-20">
+    <div class="mx-auto grid max-w-6xl gap-10 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        products.map((product, i) => (
+          <a href={`/products/${product.id}`} class="group block">
+            {
+              product.data.heroImage ? (
+                <div class="w-full overflow-hidden">
+                  <img
+                    src={product.data.heroImage}
+                    alt={product.data.summary}
+                    class="h-auto w-full transition-transform duration-500 ease-out group-hover:scale-[1.4]"
+                  />
+                </div>
+              ) : (
+                <PlaceholderPlate
+                  label={product.data.title}
+                  seed={i + 60}
+                  class="aspect-[4/5] w-full"
+                />
+              )
+            }
+            <p class="mt-4 font-mono text-xs uppercase tracking-[0.1em] text-stone">
+              {product.data.category} · {product.data.year}
+            </p>
+            <h2 class="mt-1 font-display text-xl text-ink group-hover:text-patina">
+              {product.data.title}
+            </h2>
+          </a>
+        ))
+      }
+    </div>
+  </section>
+
   <section class="border-t border-stone-light/70 bg-paper px-6 py-16 md:px-10 md:py-24">
     <div class="prose-content mx-auto max-w-3xl text-ink/85">
       <p class="coord-mark">Notes on memory</p>
@@ -90,40 +124,6 @@ const jsonLd = breadcrumbSchema([
         the traces of a person's life. For the true value of certain objects emerges not at the
         moment of their creation, but over the course of the time they live.
       </p>
-    </div>
-  </section>
-
-  <section class="border-t border-stone-light/70 px-6 py-12 md:px-10 md:py-20">
-    <div class="mx-auto grid max-w-6xl gap-10 sm:grid-cols-2 lg:grid-cols-3">
-      {
-        products.map((product, i) => (
-          <a href={`/products/${product.id}`} class="group block">
-            {
-              product.data.heroImage ? (
-                <div class="aspect-[4/5] w-full overflow-hidden">
-                  <img
-                    src={product.data.heroImage}
-                    alt={product.data.summary}
-                    class="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.4]"
-                  />
-                </div>
-              ) : (
-                <PlaceholderPlate
-                  label={product.data.title}
-                  seed={i + 60}
-                  class="aspect-[4/5] w-full"
-                />
-              )
-            }
-            <p class="mt-4 font-mono text-xs uppercase tracking-[0.1em] text-stone">
-              {product.data.category} · {product.data.year}
-            </p>
-            <h2 class="mt-1 font-display text-xl text-ink group-hover:text-patina">
-              {product.data.title}
-            </h2>
-          </a>
-        ))
-      }
     </div>
   </section>
 </BaseLayout>

@@ -4,6 +4,7 @@ titleTr: "İç Mekan Tasarımı"
 order: 3
 summary: "Interior design and joinery detailing developed alongside the architecture, not as an afterthought."
 keywords: ["interior architecture studio Turkey", "iç mimarlık ofisi", "villa iç mekan tasarımı"]
+heroImage: "/images/practice/display-case-lighting-adjustment.jpg"
 ---
 
 Because our interiors team works from the same set of drawings as the architects, floor plans, lighting, joinery and material palettes are resolved together rather than layered on after the building is finished.

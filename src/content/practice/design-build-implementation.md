@@ -4,6 +4,7 @@ titleTr: "Anahtar Teslim Uygulama"
 order: 2
 summary: "Turnkey construction management that keeps the architect's intent intact from groundbreaking to handover."
 keywords: ["design build architecture Turkey", "anahtar teslim mimarlık", "yapı uygulama yönetimi"]
+heroImage: "/images/practice/onsite-display-case-installation.jpg"
 ---
 
 Drawings only become buildings through careful site management. Our implementation teams stay on site for the full construction period, running the contractor tender, coordinating trades and checking every detail against the original design intent.

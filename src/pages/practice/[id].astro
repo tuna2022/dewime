@@ -39,13 +39,43 @@ const jsonLd = breadcrumbSchema([
     </div>
   </section>
 
-  <PlaceholderPlate
-    label={discipline.data.title}
-    seed={discipline.data.order + 10}
-    class="mx-auto aspect-[21/9] w-full max-w-6xl"
-  />
+  {
+    discipline.data.heroImage ? (
+      <div class="mx-auto aspect-[21/9] w-full max-w-6xl overflow-hidden">
+        <img
+          src={discipline.data.heroImage}
+          alt={discipline.data.summary}
+          class="h-full w-full object-cover"
+        />
+      </div>
+    ) : (
+      <PlaceholderPlate
+        label={discipline.data.title}
+        seed={discipline.data.order + 10}
+        class="mx-auto aspect-[21/9] w-full max-w-6xl"
+      />
+    )
+  }
 
   <section class="px-6 py-16 md:px-10 md:py-24">
+    {
+      discipline.data.detailImages.length > 0 && (
+        <div class="mx-auto mb-16 max-w-3xl">
+          <p class="coord-mark">Construction detail</p>
+          <div class="mt-6 grid grid-cols-1 gap-6 md:grid-cols-2">
+            {discipline.data.detailImages.map((src) => (
+              <img
+                src={src}
+                alt={`Construction detail for ${discipline.data.title}`}
+                class="hover-zoom h-auto w-full border border-stone-light/70"
+                loading="lazy"
+              />
+            ))}
+          </div>
+        </div>
+      )
+    }
+
     <div class="prose-content mx-auto max-w-3xl text-ink/85">
       <Content />
     </div>

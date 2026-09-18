@@ -9,6 +9,7 @@ const practice = defineCollection({
     order: z.number(),
     summary: z.string(),
     heroImage: z.string().optional(),
+    detailImages: z.array(z.string()).default([]),
     keywords: z.array(z.string()).default([]),
   }),
 });

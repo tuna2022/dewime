@@ -6,6 +6,7 @@ year: 2024
 summary: "A demountable shelving system with integrated shelf-edge LED lighting, developed from a joinery detail first built for the Karaköy loft restoration."
 featured: false
 order: 3
+heroImage: "/images/interior-projects/golden-hour-skyline/reading-nook.jpg"
 detailImage: "/images/products/bookshelf-led-detail.jpg"
 ---
 

@@ -6,6 +6,7 @@ year: 2022
 summary: "A pendant light whose stacked rings echo the topographic contour drawings used in early site studies."
 featured: true
 order: 2
+heroImage: "/images/products/jewelry-display-case-technical.jpg"
 ---
 
 The stacked-ring form began as a study model built from topographic contour lines cut from card — the same technique the studio uses to read a hillside site before designing on it.

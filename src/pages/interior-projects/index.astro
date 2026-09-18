@@ -29,12 +29,6 @@ const goldenHourGallery = [
   { src: "floral-vignette.jpg", alt: "Floral still life vignette in sunlit interior" },
 ] as const;
 
-const goldenHourDetails = [
-  { src: "construction-detail/kitchen-island-blueprint.jpg", alt: "Construction drawing for the marble kitchen island" },
-  { src: "construction-detail/bookshelf-led-detail.jpg", alt: "LED joinery detail drawing for a built-in bookshelf" },
-  { src: "construction-detail/console-technical-drawing.jpg", alt: "Technical drawing for a marble console table" },
-] as const;
-
 const sunlitCoastalGallery = [
   { src: "living-room.jpg", alt: "Sunlit coastal living room opening onto the sea, with a stone fireplace and linen sofa", feature: true },
   { src: "terrace.jpg", alt: "Sea-view terrace with wicker furniture and olive trees", feature: true },
@@ -44,6 +38,17 @@ const sunlitCoastalGallery = [
   { src: "entryway.jpg", alt: "Entryway by the sea with distressed wood and wicker details" },
   { src: "lounge.jpg", alt: "Coastal retreat lounge with natural materials and warm textures" },
   { src: "kitchen-pendants.jpg", alt: "Wicker pendant lights over a coastal kitchen counter" },
+] as const;
+
+const jewelryBoutiqueGallery = [
+  { src: "historic-mansion-boutique.jpg", alt: "Jewelry boutique in champagne-bronze hues set within a historic mansion", feature: true },
+  { src: "boutique-bronze-portal.jpg", alt: "Luxury jewelry boutique entrance framed by a bronze portal", feature: true },
+  { src: "oval-display-cases.jpg", alt: "Central oval display cases in champagne bronze showing jewelry as staged works of art", feature: true },
+  { src: "consultation-room.jpg", alt: "Window-side consultation room with a bronze portal, sage-green seating and smoked oak furniture" },
+  { src: "showcase-detail.jpg", alt: "Illuminated champagne-bronze showcase detail with controlled LED lighting" },
+  { src: "reception-desk.jpg", alt: "Luxury jewelry boutique reception desk" },
+  { src: "fluted-wall-sconce.jpg", alt: "Bi-directional champagne-bronze wall sconce on a fluted wall panel" },
+  { src: "washbasin-detail.jpg", alt: "Boutique washbasin with champagne-bronze details" },
 ] as const;
 ---
 
@@ -59,87 +64,6 @@ const sunlitCoastalGallery = [
       <h1 class="mt-4 max-w-2xl font-display text-4xl text-ink md:text-6xl">
         Built interiors across Türkiye.
       </h1>
-      <p class="mt-6 max-w-xl text-lg text-ink/75">
-        {SITE.areaServed.join(" · ")}
-      </p>
-    </div>
-  </section>
-
-  <section class="border-t border-stone-light/70 bg-paper px-6 py-16 md:px-10 md:py-24">
-    <div class="prose-content mx-auto max-w-3xl text-ink/85">
-      <p class="coord-mark">Notes on memory</p>
-      <p class="mt-6">
-        One of the most common issues in luxury residential design is that the space appears
-        overly flawless the moment it is completed. On paper, there is a strong composition, the
-        right materials, balanced proportions, impressive lighting, and carefully selected
-        furniture. In the renderings, everything is perfectly in place. The space looks
-        aesthetically complete—yet it has not yet been lived in.
-      </p>
-      <p>
-        What emerges at this stage is often not a true "place," but rather a well-designed space
-        devoid of memory.
-      </p>
-      <p>
-        A house transforms into a living space only when people begin to inhabit it. For a home
-        is not merely an architectural shell. The way morning light falls on a particular
-        armchair, the specific corner of a table where work is consistently done, the window by
-        which coffee is enjoyed, the hallway where children run, and the spot where guests
-        gather—these elements shape the character of the space over time. None of these
-        behaviors can be fully replicated in a drawing.
-      </p>
-      <p>The designer creates the physical framework of the space, but it is the user who creates its memory.</p>
-      <p>
-        This is particularly significant in luxury design, where the concept of "perfection"
-        often dominates high-budget projects. There is a desire for surfaces to remain
-        unblemished, furniture to stay pristine, and materials to resist aging. Yet, it is
-        precisely these traces that reveal a home has truly been lived in. Slight wear on a stone
-        surface, the way a leather armchair molds to the body over time, tonal variations in the
-        wood flooring, or the sheen that develops on a frequently touched door handle—these
-        details make the space's history visible.
-      </p>
-      <p>These traces are not flaws; they are memories.</p>
-      <p>
-        A design that looks beautiful on paper encounters the real world for the first time only
-        after execution. Scale, light, sound, materials, and the human body put the design's
-        integrity to the test. Then, as the space is put to use, the design undergoes a second
-        transformation. People use certain spaces differently than the designer envisioned; they
-        rearrange furniture, introduce new objects, and adapt the setting to their own
-        lifestyles.
-      </p>
-      <p>
-        Therefore, a high-quality luxury residential design should not be a system that dictates
-        every detail in advance. On the contrary, it should allow for the flexibility to let the
-        user transform the space over time.
-      </p>
-      <p>
-        Perhaps true luxury is not a home that looks flawless on day one, but rather a space
-        that—even after a decade—bears the imprint of the people who live there, evolving while
-        retaining its value.
-      </p>
-      <p>For the architect designs the space.</p>
-      <p>But it is the people living within it who imbue that space with memory.</p>
-    </div>
-  </section>
-
-  <section class="border-t border-stone-light/70 px-6 py-12 md:px-10 md:py-20">
-    <div class="mx-auto grid max-w-6xl gap-10 sm:grid-cols-2 lg:grid-cols-3">
-      {
-        projects.map((project, i) => (
-          <a href={`/interior-projects/${project.id}`} class="group block">
-            <PlaceholderPlate
-              label={`${project.data.title}, ${project.data.city}`}
-              seed={i + 20}
-              class="aspect-[4/5] w-full"
-            />
-            <p class="mt-4 font-mono text-xs uppercase tracking-[0.1em] text-stone">
-              {project.data.city} · {project.data.year} · {project.data.category}
-            </p>
-            <h2 class="mt-1 font-display text-xl text-ink group-hover:text-patina">
-              {project.data.title}
-            </h2>
-          </a>
-        ))
-      }
     </div>
   </section>
 
@@ -240,20 +164,6 @@ const sunlitCoastalGallery = [
         }
       </div>
 
-      <p class="mt-16 coord-mark">Construction detail</p>
-      <div class="mt-6 grid grid-cols-1 gap-6 md:grid-cols-3">
-        {
-          goldenHourDetails.map((img) => (
-            <img
-              src={`/images/interior-projects/golden-hour-skyline/${img.src}`}
-              alt={img.alt}
-              class="hover-zoom aspect-[4/3] w-full border border-stone-light/70 object-cover"
-              loading="lazy"
-            />
-          ))
-        }
-      </div>
-
       <p class="mt-10 max-w-2xl font-mono text-xs uppercase tracking-[0.08em] text-stone">
         These images are AI-generated — a concept study, not a built project.
         <span lang="tr" class="block normal-case not-italic tracking-normal">
@@ -304,6 +214,141 @@ const sunlitCoastalGallery = [
           proje değildir.
         </span>
       </p>
+    </div>
+  </section>
+
+  <section class="border-t border-stone-light/70 px-6 py-16 md:px-10 md:py-24">
+    <div class="mx-auto max-w-6xl">
+      <p class="coord-mark">Concept study</p>
+      <h2 class="mt-3 font-display text-3xl text-ink md:text-4xl">Luxury Jewelry Boutique</h2>
+
+      <div class="prose-content mt-6 max-w-2xl text-ink/85">
+        <p>
+          This jewelry store features a distinctive design approach that merges the architectural
+          memory of a historic building with contemporary display techniques within a single
+          space. Light-colored natural stone surfaces, ivory-toned walls, and champagne-bronze
+          metal details form the store's core material palette. Wide, rounded transitions between
+          spaces guide visitors while lending rhythm, depth, and visual continuity to the store.
+        </p>
+        <p>
+          Centrally positioned oval display cases present the products not merely as items for
+          sale, but as carefully staged, precious works of art. Low-iron glass, controlled LED
+          lighting, and light-colored display surfaces highlight the form, gemstones, and
+          craftsmanship of the jewelry. Meanwhile, wall-mounted and freestanding vertical display
+          cases break up spatial monotony by offering display opportunities at varying scales.
+        </p>
+        <p>
+          Consultation areas situated by the windows transform the sales process into a calmer,
+          more personal experience. Sage-green seating and smoked oak furniture balance the
+          warmth of the bronze surfaces. Bi-directional wall sconces mounted on fluted wall panels
+          accentuate the architectural texture while creating a soft atmosphere. Ultimately, the
+          store evolves into a cohesive space that is refined and reassuring—eschewing
+          ostentation—and fosters a strong connection between the product and the visitor.
+        </p>
+      </div>
+
+      <div class="mt-10 grid grid-cols-2 gap-4 md:grid-cols-4 md:auto-rows-[200px] md:grid-flow-dense md:gap-6">
+        {
+          jewelryBoutiqueGallery.map((img) => (
+            <img
+              src={`/images/interior-projects/luxury-jewelry-boutique/${img.src}`}
+              alt={img.alt}
+              class={`hover-zoom aspect-[4/3] h-full w-full object-cover ${
+                "feature" in img && img.feature
+                  ? "col-span-2 aspect-auto md:row-span-2"
+                  : ""
+              }`}
+              loading="lazy"
+            />
+          ))
+        }
+      </div>
+
+      <p class="mt-10 max-w-2xl font-mono text-xs uppercase tracking-[0.08em] text-stone">
+        These images are AI-generated — a concept study, not a built project.
+        <span lang="tr" class="block normal-case not-italic tracking-normal">
+          Bu görseller yapay zekâ ile üretilmiştir; bir konsept çalışmasıdır, uygulanmış bir
+          proje değildir.
+        </span>
+      </p>
+    </div>
+  </section>
+
+  <section class="border-t border-stone-light/70 bg-paper px-6 py-16 md:px-10 md:py-24">
+    <div class="prose-content mx-auto max-w-3xl text-ink/85">
+      <p class="coord-mark">Notes on memory</p>
+      <p class="mt-6">
+        One of the most common issues in luxury residential design is that the space appears
+        overly flawless the moment it is completed. On paper, there is a strong composition, the
+        right materials, balanced proportions, impressive lighting, and carefully selected
+        furniture. In the renderings, everything is perfectly in place. The space looks
+        aesthetically complete—yet it has not yet been lived in.
+      </p>
+      <p>
+        What emerges at this stage is often not a true "place," but rather a well-designed space
+        devoid of memory.
+      </p>
+      <p>
+        A house transforms into a living space only when people begin to inhabit it. For a home
+        is not merely an architectural shell. The way morning light falls on a particular
+        armchair, the specific corner of a table where work is consistently done, the window by
+        which coffee is enjoyed, the hallway where children run, and the spot where guests
+        gather—these elements shape the character of the space over time. None of these
+        behaviors can be fully replicated in a drawing.
+      </p>
+      <p>The designer creates the physical framework of the space, but it is the user who creates its memory.</p>
+      <p>
+        This is particularly significant in luxury design, where the concept of "perfection"
+        often dominates high-budget projects. There is a desire for surfaces to remain
+        unblemished, furniture to stay pristine, and materials to resist aging. Yet, it is
+        precisely these traces that reveal a home has truly been lived in. Slight wear on a stone
+        surface, the way a leather armchair molds to the body over time, tonal variations in the
+        wood flooring, or the sheen that develops on a frequently touched door handle—these
+        details make the space's history visible.
+      </p>
+      <p>These traces are not flaws; they are memories.</p>
+      <p>
+        A design that looks beautiful on paper encounters the real world for the first time only
+        after execution. Scale, light, sound, materials, and the human body put the design's
+        integrity to the test. Then, as the space is put to use, the design undergoes a second
+        transformation. People use certain spaces differently than the designer envisioned; they
+        rearrange furniture, introduce new objects, and adapt the setting to their own
+        lifestyles.
+      </p>
+      <p>
+        Therefore, a high-quality luxury residential design should not be a system that dictates
+        every detail in advance. On the contrary, it should allow for the flexibility to let the
+        user transform the space over time.
+      </p>
+      <p>
+        Perhaps true luxury is not a home that looks flawless on day one, but rather a space
+        that—even after a decade—bears the imprint of the people who live there, evolving while
+        retaining its value.
+      </p>
+      <p>For the architect designs the space.</p>
+      <p>But it is the people living within it who imbue that space with memory.</p>
+    </div>
+  </section>
+
+  <section class="border-t border-stone-light/70 px-6 py-12 md:px-10 md:py-20">
+    <div class="mx-auto grid max-w-6xl gap-10 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        projects.map((project, i) => (
+          <a href={`/interior-projects/${project.id}`} class="group block">
+            <PlaceholderPlate
+              label={`${project.data.title}, ${project.data.city}`}
+              seed={i + 20}
+              class="aspect-[4/5] w-full"
+            />
+            <p class="mt-4 font-mono text-xs uppercase tracking-[0.1em] text-stone">
+              {project.data.city} · {project.data.year} · {project.data.category}
+            </p>
+            <h2 class="mt-1 font-display text-xl text-ink group-hover:text-patina">
+              {project.data.title}
+            </h2>
+          </a>
+        ))
+      }
     </div>
   </section>
 </BaseLayout>

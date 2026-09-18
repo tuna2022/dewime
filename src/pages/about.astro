@@ -1,6 +1,5 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import PlaceholderPlate from "../components/PlaceholderPlate.astro";
 import { SITE } from "../consts";
 import { breadcrumbSchema } from "../lib/schema";
 
@@ -68,11 +67,13 @@ const stats = [
     </div>
   </section>
 
-  <PlaceholderPlate
-    label={`${SITE.name} studio team`}
-    seed={40}
-    class="mx-auto aspect-[21/9] w-full max-w-6xl"
-  />
+  <div class="mx-auto w-full max-w-6xl">
+    <img
+      src="/images/about/studio-team.jpg"
+      alt={`${SITE.name} studio team in front of a completed jewelry display case installation`}
+      class="h-auto w-full"
+    />
+  </div>
 
   <section class="border-t border-stone-light/70 px-6 py-16 md:px-10 md:py-24">
     <div class="mx-auto grid max-w-6xl gap-8 sm:grid-cols-2 lg:grid-cols-4">

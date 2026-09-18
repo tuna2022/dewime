@@ -62,11 +62,11 @@ const jsonLd = [
 
   {
     product.data.heroImage ? (
-      <div class="mx-auto aspect-[16/9] w-full max-w-6xl overflow-hidden">
+      <div class="mx-auto w-full max-w-6xl">
         <img
           src={product.data.heroImage}
           alt={product.data.summary}
-          class="hover-zoom h-full w-full object-cover"
+          class="hover-zoom h-auto w-full"
         />
       </div>
     ) : (
@@ -90,7 +90,7 @@ const jsonLd = [
           <img
             src={product.data.detailImage}
             alt={`Construction drawing for ${product.data.title}`}
-            class="hover-zoom mt-6 w-full border border-stone-light/70 object-cover"
+            class="hover-zoom mt-6 h-auto w-full border border-stone-light/70"
             loading="lazy"
           />
         </div>
