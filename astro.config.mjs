@@ -8,7 +8,7 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   // Keep in sync with SITE.domain in src/consts.ts — needed for sitemap
   // URLs, canonical links and Open Graph tags to resolve correctly.
-  site: 'https://www.memorialoci.com',
+  site: 'https://www.dewime.com',
 
   vite: {
     plugins: [tailwindcss()]

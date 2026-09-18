@@ -1,5 +1,5 @@
 ---
-question: "Which cities and regions does Memoria Loci work in?"
+question: "Which cities and regions does Design Without Memories work in?"
 order: 4
 ---
 

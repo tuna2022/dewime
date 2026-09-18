@@ -9,6 +9,7 @@
   <rect width="1200" height="630" fill="url(#bg)" />
   <path d="M -20 420 Q 400 380 620 430 T 1220 400" fill="none" stroke="#8c6b4f" stroke-width="1.5" opacity="0.5" />
   <path d="M -20 480 Q 420 460 640 500 T 1220 470" fill="none" stroke="#8c6b4f" stroke-width="1.5" opacity="0.35" />
-  <text x="80" y="300" font-family="Georgia, 'Times New Roman', serif" font-size="72" fill="#201d1a">Memoria Loci</text>
-  <text x="80" y="350" font-family="Arial, sans-serif" font-size="24" letter-spacing="2" fill="#435c50">ARCHITECTURE &amp; DESIGN-BUILD STUDIO — ISTANBUL, TÜRKİYE</text>
+  <text x="80" y="255" font-family="Georgia, 'Times New Roman', serif" font-size="64" fill="#201d1a">Design Without</text>
+  <text x="80" y="330" font-family="Georgia, 'Times New Roman', serif" font-size="64" fill="#201d1a">Memories</text>
+  <text x="80" y="390" font-family="Arial, sans-serif" font-size="24" letter-spacing="2" fill="#435c50">ARCHITECTURE &amp; DESIGN-BUILD STUDIO — ISTANBUL, TÜRKİYE</text>
 </svg>

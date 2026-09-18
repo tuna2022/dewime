@@ -24,4 +24,4 @@ Allow: /
 User-agent: CCBot
 Allow: /
 
-Sitemap: https://www.memorialoci.com/sitemap-index.xml
+Sitemap: https://www.dewime.com/sitemap-index.xml

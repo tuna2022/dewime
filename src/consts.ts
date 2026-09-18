@@ -3,19 +3,19 @@
 // nothing else in the codebase needs to change.
 
 export const SITE = {
-  name: "Memoria Loci",
-  legalName: "Memoria Loci Architecture Studio",
+  name: "Design Without Memories",
+  legalName: "Design Without Memories Architecture Studio",
   tagline: "Architecture rooted in place",
   // English is the primary language; Turkish is layered in via place names,
   // structured data (areaServed, alternateName) and meta descriptions so
   // Turkish-language searches still surface the site. See src/lib/schema.ts.
-  domain: "https://www.memorialoci.com",
+  domain: "https://www.dewime.com",
   description:
-    "Memoria Loci is an architectural design and implementation studio delivering residential, commercial and restoration projects from concept to completion across Türkiye.",
+    "Design Without Memories is an architectural design and implementation studio delivering residential, commercial and restoration projects from concept to completion across Türkiye.",
   descriptionTr:
-    "Memoria Loci, Türkiye genelinde konut, ticari ve restorasyon projelerini konseptten anahtar teslime kadar yürüten bir mimari tasarım ve uygulama stüdyosudur.",
+    "Design Without Memories, Türkiye genelinde konut, ticari ve restorasyon projelerini konseptten anahtar teslime kadar yürüten bir mimari tasarım ve uygulama stüdyosudur.",
   founded: "2011",
-  email: "studio@memorialoci.com",
+  email: "studio@dewime.com",
   phone: "+90 212 000 00 00",
   phoneDisplay: "+90 212 000 00 00",
   whatsapp: "https://wa.me/902120000000",
@@ -33,9 +33,9 @@ export const SITE = {
   // "areaServed" so Turkish city-level searches have something to match.
   areaServed: ["Istanbul", "Bodrum", "Izmir", "Ankara", "Antalya"],
   social: {
-    instagram: "https://instagram.com/memorialoci",
-    linkedin: "https://linkedin.com/company/memorialoci",
-    pinterest: "https://pinterest.com/memorialoci",
+    instagram: "https://instagram.com/dewime",
+    linkedin: "https://linkedin.com/company/dewime",
+    pinterest: "https://pinterest.com/dewime",
   },
   geo: {
     lat: 41.0082,

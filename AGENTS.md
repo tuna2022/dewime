@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-Marketing/portfolio site for Memoria Loci, a (placeholder-named) architecture design-and-build studio in Istanbul. Built with Astro 7 (static output) + Tailwind CSS v4. Content is placeholder business data pending the real company's details — see "Placeholder data" below before treating any copy as real.
+Marketing/portfolio site for Design Without Memories, a (placeholder-named) architecture design-and-build studio in Istanbul. Built with Astro 7 (static output) + Tailwind CSS v4. Content is placeholder business data pending the real company's details — see "Placeholder data" below before treating any copy as real.
 
 ## Commands
 
