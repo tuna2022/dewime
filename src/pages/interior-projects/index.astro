@@ -335,11 +335,24 @@ const jewelryBoutiqueGallery = [
       {
         projects.map((project, i) => (
           <a href={`/interior-projects/${project.id}`} class="group block">
-            <PlaceholderPlate
-              label={`${project.data.title}, ${project.data.city}`}
-              seed={i + 20}
-              class="aspect-[4/5] w-full"
-            />
+            {
+              project.data.heroImage ? (
+                <div class="w-full overflow-hidden">
+                  <img
+                    src={project.data.heroImage}
+                    alt={`${project.data.title}, ${project.data.city}`}
+                    class="hover-zoom h-auto w-full"
+                    loading="lazy"
+                  />
+                </div>
+              ) : (
+                <PlaceholderPlate
+                  label={`${project.data.title}, ${project.data.city}`}
+                  seed={i + 20}
+                  class="aspect-[4/5] w-full"
+                />
+              )
+            }
             <p class="mt-4 font-mono text-xs uppercase tracking-[0.1em] text-stone">
               {project.data.city} · {project.data.year} · {project.data.category}
             </p>

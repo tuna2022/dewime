@@ -8,6 +8,7 @@ area: "6,200 m²"
 summary: "A nine-storey office renovation built around a new central atrium that brings daylight into the building's core."
 featured: true
 order: 2
+heroImage: "/images/interior-projects/levent-office-atrium/art-lounge-istanbul-view.jpg"
 ---
 
 The existing 1990s office block had deep floor plates and almost no natural light beyond the perimeter offices. We cut a full-height atrium through the centre of the building, replacing three under-used meeting rooms per floor with a shared daylit core.

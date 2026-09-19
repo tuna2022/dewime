@@ -9,8 +9,6 @@ import { stripMarkdown } from "../lib/text";
 const practice = (await getCollection("practice")).sort((a, b) => a.data.order - b.data.order);
 const allProjects = (await getCollection("interiorProjects")).sort((a, b) => a.data.order - b.data.order);
 const featuredProjects = allProjects.filter((p) => p.data.featured).slice(0, 3);
-const allProducts = (await getCollection("products")).sort((a, b) => a.data.order - b.data.order);
-const featuredProducts = allProducts.filter((p) => p.data.featured).slice(0, 3);
 const faqItems = (await getCollection("faq")).sort((a, b) => a.data.order - b.data.order).slice(0, 4);
 const faqRendered = await Promise.all(faqItems.map((item) => render(item)));
 
@@ -20,6 +18,19 @@ const faqJsonLd = faqSchema(
     answer: stripMarkdown(item.body ?? ""),
   }))
 );
+
+const artHouseGallery = [
+  { src: "large-abstract-artwork-living-room.jpg", alt: "Large abstract artwork above a travertine console in a contemporary living room", feature: true },
+  { src: "art-nouveau-salon-painting.jpg", alt: "Abstract painting above a console table in an Art Nouveau salon", feature: true },
+  { src: "bosphorus-painting-istanbul-apartment.jpg", alt: "Gilt-framed Bosphorus painting in an old Istanbul apartment", feature: true },
+  { src: "painting-on-wooden-wall.jpg", alt: "Abstract painting on a warm-toned wooden wall" },
+  { src: "coastal-painting-mediterranean-home.jpg", alt: "Calm coastal painting above a reclaimed-wood sideboard in a Mediterranean home" },
+  { src: "metal-sculpture-walnut-table.jpg", alt: "Elegant metal sculpture on a walnut coffee table" },
+  { src: "stone-sculpture-walnut-table.jpg", alt: "Elegant stone sculpture on a walnut dining table" },
+  { src: "plaster-sculpture-green-marble.jpg", alt: "Plaster sculpture on a green marble coffee table" },
+  { src: "contemporary-painting-compact-living-room.jpg", alt: "Contemporary abstract painting in a compact living room" },
+  { src: "contemporary-painting-brick-wall.jpg", alt: "Large contemporary painting on an exposed brick wall" },
+] as const;
 ---
 
 <BaseLayout
@@ -63,35 +74,78 @@ const faqJsonLd = faqSchema(
       </div>
     </div>
 
-    <div class="relative mt-16 aspect-[16/9] w-full overflow-hidden md:mt-20 md:aspect-[21/9]">
-      <video
-        id="hero-video"
-        class="h-full w-full object-cover"
-        autoplay
-        muted
-        loop
-        playsinline
-        preload="auto"
-        poster="/videos/hero-poster.jpg"
-      >
-        <source src="/videos/luxury-interior-loop.mp4" type="video/mp4" />
-      </video>
-      <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/30 via-transparent to-transparent">
-      </div>
-      <p class="coord-mark absolute bottom-4 left-4 bg-canvas/70 px-2 py-1 backdrop-blur-sm">
-        {SITE.name} — studio work, {SITE.address.city}
-      </p>
+    <div class="mt-16 grid grid-cols-3 gap-4 md:mt-20 md:gap-6">
+      <img
+        src="/images/interior-projects/golden-hour-skyline/living-room-vignette.jpg"
+        alt="Living room seating vignette in golden-hour light"
+        class="h-auto w-full"
+      />
+      <img
+        src="/images/interior-projects/golden-hour-skyline/living-room.jpg"
+        alt="Golden-hour living room with a city-skyline view through floor-to-ceiling glass"
+        class="h-auto w-full"
+      />
+      <img
+        src="/images/interior-projects/sunlit-mediterranean-coastal/lounge.jpg"
+        alt="Coastal retreat lounge with natural materials and warm textures"
+        class="h-auto w-full"
+      />
     </div>
+    <p class="coord-mark mt-4">
+      {SITE.name} — studio work, {SITE.address.city}
+    </p>
   </section>
 
-  <script>
-    // Belt-and-braces: some browsers occasionally ignore the declarative
-    // `autoplay` attribute (e.g. after bfcache restores), so also try
-    // starting playback programmatically. Muted playback doesn't need a
-    // user gesture, so this should succeed everywhere autoplay does.
-    const heroVideo = document.getElementById("hero-video") as HTMLVideoElement | null;
-    heroVideo?.play().catch(() => {});
-  </script>
+  <!-- Art and House -->
+  <section id="art-and-house" class="scroll-mt-20 border-t border-stone-light/70 bg-paper px-6 py-16 md:px-10 md:py-24">
+    <div class="mx-auto max-w-6xl">
+      <div class="grid grid-cols-2 gap-4 md:grid-cols-4 md:auto-rows-[200px] md:grid-flow-dense md:gap-6">
+        {
+          artHouseGallery.map((img) => (
+            <img
+              src={`/images/art-house/${img.src}`}
+              alt={img.alt}
+              class={`hover-zoom aspect-[4/3] h-full w-full object-cover ${
+                "feature" in img && img.feature
+                  ? "col-span-2 aspect-auto md:row-span-2"
+                  : ""
+              }`}
+              loading="lazy"
+            />
+          ))
+        }
+      </div>
+
+      <div class="prose-content mx-auto mt-10 max-w-3xl text-ink/85">
+        <p class="coord-mark">Art and House</p>
+        <p class="mt-6">
+          A home is not merely a space where furniture is arranged; it acquires a unique
+          character over time through the choices, habits, and accumulated memories of those who
+          live there. Artworks can become part of this character: a painting on the wall, a
+          sculpture on the dining table, or a small object on a windowsill transforms the way we
+          perceive the space around us.
+        </p>
+        <p>
+          The colors of a painting might engage with a wooden wall. The matte surface of a
+          plaster sculpture may stand out more vividly against a polished marble table. As
+          daylight shifts throughout the day, the artwork's texture, its shadows, and its
+          relationship with surrounding objects evolve. Thus, the piece is experienced not just
+          at the moment of selection, but continuously throughout the time spent at home.
+        </p>
+        <p>
+          When integrating art into a home, personal connection is just as important as scale,
+          lighting, and materials. An artwork might evoke memories of a journey or create space
+          for a thought we wish to dwell upon. We might look at a painting we pass every day with
+          a different mood, noticing a detail that had previously escaped our attention.
+        </p>
+        <p>
+          Art and House considers artworks in the context of daily life at home. The goal is not
+          to fill every corner with art, but to ensure that the right piece—placed in the right
+          spot—becomes part of the home's story.
+        </p>
+      </div>
+    </div>
+  </section>
 
   <!-- Philosophy -->
   <section class="border-t border-stone-light/70 px-6 py-20 md:px-10 md:py-28">
@@ -157,59 +211,29 @@ const faqJsonLd = faqSchema(
         {
           featuredProjects.map((project, i) => (
             <a href={`/interior-projects/${project.id}`} class="group block">
-              <PlaceholderPlate
-                label={`${project.data.title}, ${project.data.city}`}
-                seed={i + 2}
-                class="aspect-[4/5] w-full"
-              />
-              <p class="mt-4 font-mono text-xs uppercase tracking-[0.1em] text-stone">
-                {project.data.city} · {project.data.year}
-              </p>
-              <h3 class="mt-1 font-display text-xl text-ink group-hover:text-patina">
-                {project.data.title}
-              </h3>
-            </a>
-          ))
-        }
-      </div>
-    </div>
-  </section>
-
-  <!-- Featured products -->
-  <section class="border-t border-stone-light/70 bg-paper px-6 py-20 md:px-10 md:py-28">
-    <div class="mx-auto max-w-6xl">
-      <div class="flex items-baseline justify-between gap-4">
-        <p class="coord-mark">Products design</p>
-        <a href="/products" class="font-mono text-xs uppercase tracking-[0.14em] text-stone hover:text-ink">
-          All products →
-        </a>
-      </div>
-      <div class="mt-10 grid gap-10 md:grid-cols-3">
-        {
-          featuredProducts.map((product, i) => (
-            <a href={`/products/${product.id}`} class="group block">
               {
-                product.data.heroImage ? (
-                  <div class="aspect-[4/5] w-full overflow-hidden">
+                project.data.heroImage ? (
+                  <div class="w-full overflow-hidden">
                     <img
-                      src={product.data.heroImage}
-                      alt={product.data.summary}
-                      class="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.4]"
+                      src={project.data.heroImage}
+                      alt={`${project.data.title}, ${project.data.city}`}
+                      class="hover-zoom h-auto w-full"
+                      loading="lazy"
                     />
                   </div>
                 ) : (
                   <PlaceholderPlate
-                    label={product.data.title}
-                    seed={i + 62}
+                    label={`${project.data.title}, ${project.data.city}`}
+                    seed={i + 2}
                     class="aspect-[4/5] w-full"
                   />
                 )
               }
               <p class="mt-4 font-mono text-xs uppercase tracking-[0.1em] text-stone">
-                {product.data.category} · {product.data.year}
+                {project.data.city} · {project.data.year}
               </p>
               <h3 class="mt-1 font-display text-xl text-ink group-hover:text-patina">
-                {product.data.title}
+                {project.data.title}
               </h3>
             </a>
           ))

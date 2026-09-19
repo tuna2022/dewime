@@ -8,6 +8,7 @@ area: "410 m²"
 summary: "A private residence set into a limestone hillside above the Aegean, built from locally quarried stone."
 featured: true
 order: 1
+heroImage: "/images/interior-projects/bodrum-stone-house/contemporary-painting-brick-wall.jpg"
 ---
 
 Set into a limestone hillside above the Aegean, this private house was designed to disappear into its terrain — low, terraced, and built almost entirely from stone quarried within the province.
