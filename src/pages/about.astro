@@ -8,12 +8,6 @@ const jsonLd = breadcrumbSchema([
   { name: "About", path: "/about" },
 ]);
 
-const stats = [
-  { label: "Founded", value: SITE.founded },
-  { label: "Projects delivered", value: "60+" },
-  { label: "Cities", value: String(SITE.areaServed.length) },
-  { label: "Team", value: "18" },
-];
 ---
 
 <BaseLayout
@@ -80,19 +74,6 @@ const stats = [
           client's input and the space itself.
         </p>
       </div>
-    </div>
-  </section>
-
-  <section class="border-t border-stone-light/70 px-6 py-16 md:px-10 md:py-24">
-    <div class="mx-auto grid max-w-6xl gap-8 sm:grid-cols-2 lg:grid-cols-4">
-      {
-        stats.map((stat) => (
-          <div class="border-t border-stone-light/70 pt-4">
-            <p class="font-display text-3xl text-ink">{stat.value}</p>
-            <p class="mt-1 font-mono text-xs uppercase tracking-[0.1em] text-stone">{stat.label}</p>
-          </div>
-        ))
-      }
     </div>
   </section>
 

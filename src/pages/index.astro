@@ -9,7 +9,7 @@ import { stripMarkdown } from "../lib/text";
 const practice = (await getCollection("practice")).sort((a, b) => a.data.order - b.data.order);
 const allProjects = (await getCollection("interiorProjects")).sort((a, b) => a.data.order - b.data.order);
 const featuredProjects = allProjects.filter((p) => p.data.featured).slice(0, 3);
-const faqItems = (await getCollection("faq")).sort((a, b) => a.data.order - b.data.order).slice(0, 4);
+const faqItems = (await getCollection("faq")).sort((a, b) => a.data.order - b.data.order);
 const faqRendered = await Promise.all(faqItems.map((item) => render(item)));
 
 const faqJsonLd = faqSchema(
@@ -53,8 +53,11 @@ const artHouseGallery = [
         class="animate-reveal mt-8 max-w-xl text-lg text-ink/80 md:text-xl"
         style="animation-delay: 160ms; opacity: 0;"
       >
-        {SITE.name} is an architectural design and implementation studio based in {SITE.address.city}.
-        We take residential, commercial and restoration projects from first sketch to handover across Türkiye.
+        {SITE.name} is an {SITE.address.city}-based design and implementation studio. We
+        undertake residential, commercial, and restoration projects across Türkiye, handling
+        everything from initial visualization to final delivery. Please contact us to purchase
+        or commission the production of the artworks, products, and architectural elements
+        featured on this site.
       </p>
       <div
         class="animate-reveal mt-10 flex flex-wrap gap-4"
@@ -230,10 +233,7 @@ const artHouseGallery = [
                   />
                 )
               }
-              <p class="mt-4 font-mono text-xs uppercase tracking-[0.1em] text-stone">
-                {project.data.city} · {project.data.year}
-              </p>
-              <h3 class="mt-1 font-display text-xl text-ink group-hover:text-patina">
+              <h3 class="mt-4 font-display text-xl text-ink group-hover:text-patina">
                 {project.data.title}
               </h3>
             </a>
