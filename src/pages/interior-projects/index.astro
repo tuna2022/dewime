@@ -54,8 +54,9 @@ const jewelryBoutiqueGallery = [
 
 <BaseLayout
   title="Interior Projects"
-  description={`Residential, commercial and restoration interiors by ${SITE.name} across ${SITE.areaServed.join(", ")} and beyond.`}
+  description={`Interior design, living room design and home interior decor by ${SITE.name} — residential, commercial and restoration interiors across ${SITE.areaServed.join(", ")} and beyond.`}
   path="/interior-projects"
+  keywords={["interior design", "iç mimari", "living room design", "oturma odası tasarımı", "home interior decor", "ev iç mekan dekorasyonu", "home interior", "ev iç mekanı", ...SITE.keywords]}
   jsonLd={jsonLd}
 >
   <section class="px-6 pt-16 pb-12 md:px-10 md:pt-24">

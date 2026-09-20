@@ -4,6 +4,7 @@ import SEO from "../components/SEO.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import { organizationSchema } from "../lib/schema";
+import { SITE } from "../consts";
 
 interface Props {
   title: string;
@@ -11,10 +12,11 @@ interface Props {
   path: string;
   image?: string;
   noindex?: boolean;
+  keywords?: readonly string[];
   jsonLd?: Record<string, unknown> | Record<string, unknown>[];
 }
 
-const { title, description, path, image, noindex, jsonLd } = Astro.props;
+const { title, description, path, image, noindex, keywords, jsonLd } = Astro.props;
 
 const schemas = [
   organizationSchema(),
@@ -32,8 +34,10 @@ const schemas = [
     <meta name="generator" content={Astro.generator} />
 
     <!-- Aimed at both search crawlers and AI answer engines. -->
-    <meta name="geo.region" content="TR" />
-    <meta name="geo.placename" content="Istanbul" />
+    <meta name="geo.region" content="TR-34" />
+    <meta name="geo.placename" content="Ortaköy, Beşiktaş, Istanbul" />
+    <meta name="geo.position" content={`${SITE.geo.lat};${SITE.geo.lng}`} />
+    <meta name="ICBM" content={`${SITE.geo.lat}, ${SITE.geo.lng}`} />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -42,7 +46,14 @@ const schemas = [
       rel="stylesheet"
     />
 
-    <SEO title={title} description={description} path={path} image={image} noindex={noindex} />
+    <SEO
+      title={title}
+      description={description}
+      path={path}
+      image={image}
+      noindex={noindex}
+      keywords={keywords}
+    />
 
     {
       schemas.map((schema) => (

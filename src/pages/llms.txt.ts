@@ -18,6 +18,8 @@ export const GET: APIRoute = async () => {
     "",
     `${SITE.name} (Turkish: mimari tasarım ve uygulama stüdyosu) is based in ${SITE.address.district}, ${SITE.address.city}, Türkiye, and serves ${SITE.areaServed.join(", ")}.`,
     "",
+    `Covers: ${SITE.keywords.join(", ")}.`,
+    "",
     "## Practice",
     ...practice.map(
       (s) => `- [${s.data.title} / ${s.data.titleTr}](${SITE.domain}/practice/${s.id}): ${s.data.summary}`

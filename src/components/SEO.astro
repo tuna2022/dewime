@@ -7,10 +7,12 @@ interface Props {
   path: string;
   image?: string;
   noindex?: boolean;
+  keywords?: readonly string[];
 }
 
-const { title, description, path, image, noindex = false } = Astro.props;
+const { title, description, path, image, noindex = false, keywords = SITE.keywords } = Astro.props;
 
+const uniqueKeywords = [...new Set(keywords)];
 const canonicalURL = new URL(path, SITE.domain).toString();
 // og-default.svg is a placeholder — some platforms (Facebook, LinkedIn) don't
 // render SVG previews. Replace with a real 1200x630 JPG/PNG once photography
@@ -21,6 +23,7 @@ const pageTitle = path === "/" ? title : `${title} — ${SITE.name}`;
 
 <title>{pageTitle}</title>
 <meta name="description" content={description} />
+<meta name="keywords" content={uniqueKeywords.join(", ")} />
 <link rel="canonical" href={canonicalURL} />
 {noindex && <meta name="robots" content="noindex, nofollow" />}
 

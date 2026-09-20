@@ -8,6 +8,22 @@ const jsonLd = breadcrumbSchema([
   { name: "About", path: "/about" },
 ]);
 
+const behindTheScenesGallery = [
+  { src: "tuna-a1.jpg", alt: "Grinding and fitting metal at the workbench, welding helmet raised", feature: true },
+  { src: "tuna-a5.jpg", alt: "On site inside a historic building under restoration, steel armature rising through the room", feature: true },
+  { src: "tuna-a7.jpg", alt: "Examining a gem-set ceremonial Ottoman helmet by hand" },
+  { src: "tuna-a2.jpg", alt: "Arranging antique silver flatware for a collection review" },
+  { src: "tuna-a3.jpg", alt: "Mounting ancient bead necklaces inside a museum display case" },
+  { src: "tuna-a6.jpg", alt: "Cataloguing archaeological objects in a museum display case" },
+  { src: "tuna-a4.jpg", alt: "Welding at the bench, kneeling beside the workshop table" },
+  { src: "tuna-a9.jpg", alt: "Restoration bench work on a blue-and-white ceramic piece" },
+  { src: "tuna-a11.jpg", alt: "Cataloguing ancient jewelry and beadwork beside a laptop of archive records" },
+  { src: "tuna-a8.jpg", alt: "Grinding steel while a film crew records the process" },
+  { src: "tuna-a10.jpg", alt: "At work in the workshop" },
+  { src: "tuna-a12.jpg", alt: "Marble sarcophagus gallery at the Istanbul Archaeology Museum", feature: true },
+  { src: "tuna-a13.jpg", alt: "Terracotta sarcophagi on display at the Istanbul Archaeology Museum" },
+  { src: "tuna-a14.jpg", alt: "Mirrored display pavilion inside a hall at Topkapı Palace Museum" },
+] as const;
 ---
 
 <BaseLayout
@@ -16,20 +32,56 @@ const jsonLd = breadcrumbSchema([
   path="/about"
   jsonLd={jsonLd}
 >
+  <section class="px-6 pt-16 md:px-10 md:pt-24">
+    <div class="mx-auto max-w-6xl">
+      <p class="coord-mark">Museum practitioner</p>
+      <div class="mt-6 grid grid-cols-2 gap-4 md:grid-cols-4 md:auto-rows-[200px] md:grid-flow-dense md:gap-6">
+        {
+          behindTheScenesGallery.map((img) => (
+            <img
+              src={`/images/about/${img.src}`}
+              alt={img.alt}
+              class={`hover-zoom aspect-[4/3] h-full w-full object-cover ${
+                "feature" in img && img.feature
+                  ? "col-span-2 aspect-auto md:row-span-2"
+                  : ""
+              }`}
+              loading="lazy"
+            />
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
   <section class="border-b border-stone-light/70 px-6 pt-16 pb-12 md:px-10 md:pt-24 md:pb-16">
     <div class="mx-auto max-w-3xl">
       <p class="coord-mark">About</p>
       <p class="mt-6 font-display text-2xl leading-snug text-ink md:text-3xl">
-        I believe that a space cannot develop a memory until people begin to inhabit and
-        experience it. That is why I design and create spaces devoid of pre-existing memory—spaces
-        open to change, use, and transformation over time.
+        I am a designer specializing in museum implementation projects. Museums typically require
+        a labor-intensive, lengthy design process—yet not every project affords that kind of
+        time.
       </p>
       <p class="mt-6 text-ink/75">
-        I hope that as people live within them, interact with them, and leave their marks, these
-        spaces will gradually develop their own memories.
+        Ours is an era that demands speed and practical solutions. That is why I established
+        Design Without Memory; I focus on practical solutions for construction projects that
+        require rapid, timely execution. Please contact me at{" "}
+        <a href="mailto:tunakocayurt@gmail.com" class="text-patina hover:underline">
+          tunakocayurt@gmail.com
+        </a>{" "}
+        for quick solutions.
       </p>
       <p class="mt-6 text-ink/75">
-        Please contact me for quick and practical design solutions.
+        If time is not a constraint and you require design services involving design with
+        memory, please visit this site:{" "}
+        <a
+          href="https://www.tunakocayurt.com"
+          class="text-patina hover:underline"
+          target="_blank"
+          rel="noopener"
+        >
+          www.tunakocayurt.com
+        </a>
       </p>
       <div class="mt-6 flex flex-wrap gap-x-8 gap-y-2">
         <a
