@@ -14,4 +14,3 @@ Five villas share a single hillside plot without any one unit blocking another's
 
 Shared infrastructure (access road, drainage, landscaping) was designed as a single system from the start, which kept per-villa costs below what five separate commissions on the same site would have required.
 
-**Scope:** architectural design, design-build implementation.

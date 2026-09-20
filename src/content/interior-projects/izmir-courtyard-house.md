@@ -14,4 +14,3 @@ Rather than a garden facing outward, this house turns inward around a planted co
 
 Deciduous planting in the courtyard shades the surrounding rooms in summer and lets low winter light reach the interior once the leaves drop.
 
-**Scope:** architectural design, interior architecture, design-build implementation.

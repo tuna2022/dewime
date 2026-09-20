@@ -14,4 +14,3 @@ The client manufactures furniture on site and needed a showroom that could be re
 
 A visible workshop window lets showroom visitors watch pieces being finished, turning production into part of the retail experience.
 
-**Scope:** architectural design, interior architecture.
