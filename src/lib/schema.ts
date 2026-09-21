@@ -35,7 +35,6 @@ export function organizationSchema() {
       name: city,
     })),
     knowsAbout: SITE.keywords,
-    sameAs: Object.values(SITE.social),
   };
 }
 
