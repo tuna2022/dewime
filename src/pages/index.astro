@@ -42,63 +42,73 @@ const artHouseGallery = [
 >
   <!-- Hero -->
   <section class="relative overflow-hidden px-6 pt-16 pb-24 md:px-10 md:pt-24 md:pb-32">
-    <div class="mx-auto max-w-6xl">
+    <div class="mx-auto grid max-w-6xl gap-8 md:grid-cols-2 md:gap-16">
       <h1
-        class="animate-reveal max-w-3xl font-display text-5xl font-medium leading-[1.05] tracking-tight text-ink md:text-7xl"
+        class="animate-reveal font-display text-5xl font-medium leading-[1.05] tracking-tight text-ink md:text-6xl"
         style="animation-delay: 0ms; opacity: 0;"
       >
         Spaces begin without memory. You give them one.
       </h1>
-      <p
-        class="animate-reveal mt-8 max-w-xl text-lg text-ink/80 md:text-xl"
-        style="animation-delay: 160ms; opacity: 0;"
-      >
-        {SITE.name} is an {SITE.address.city}-based design and implementation studio. We
-        undertake residential, commercial, and restoration projects across Türkiye, handling
-        everything from initial visualization to final delivery. Please contact us to purchase
-        or commission the production of the artworks, products, and architectural elements
-        featured on this site.
-      </p>
-      <div
-        class="animate-reveal mt-10 flex flex-wrap gap-4"
-        style="animation-delay: 240ms; opacity: 0;"
-      >
-        <a
-          href="/interior-projects"
-          class="bg-ink px-6 py-3 font-mono text-xs uppercase tracking-[0.14em] text-paper transition-colors hover:bg-patina"
+      <div>
+        <p
+          class="animate-reveal text-lg text-ink/80 md:text-xl"
+          style="animation-delay: 160ms; opacity: 0;"
         >
-          View projects
-        </a>
-        <a
-          href="/contact"
-          class="border border-ink px-6 py-3 font-mono text-xs uppercase tracking-[0.14em] text-ink transition-colors hover:border-patina hover:text-patina"
+          {SITE.name} is an {SITE.address.city}-based design and implementation studio. We
+          undertake residential, commercial, and restoration projects across Türkiye, handling
+          everything from initial visualization to final delivery. Please contact us to purchase
+          or commission the production of the artworks, products, and architectural elements
+          featured on this site.
+        </p>
+        <div
+          class="animate-reveal mt-10 flex flex-wrap gap-4"
+          style="animation-delay: 240ms; opacity: 0;"
         >
-          Start a project
-        </a>
+          <a
+            href="/interior-projects"
+            class="bg-ink px-6 py-3 font-mono text-xs uppercase tracking-[0.14em] text-paper transition-colors hover:bg-patina"
+          >
+            View projects
+          </a>
+          <a
+            href="/contact"
+            class="border border-ink px-6 py-3 font-mono text-xs uppercase tracking-[0.14em] text-ink transition-colors hover:border-patina hover:text-patina"
+          >
+            Start a project
+          </a>
+        </div>
       </div>
     </div>
 
-    <div class="mt-16 grid grid-cols-3 gap-4 md:mt-20 md:gap-6">
-      <img
-        src="/images/interior-projects/golden-hour-skyline/living-room-vignette.jpg"
-        alt="Living room seating vignette in golden-hour light"
-        class="h-auto w-full"
-      />
-      <img
-        src="/images/interior-projects/golden-hour-skyline/living-room.jpg"
-        alt="Golden-hour living room with a city-skyline view through floor-to-ceiling glass"
-        class="h-auto w-full"
-      />
-      <img
-        src="/images/interior-projects/sunlit-mediterranean-coastal/lounge.jpg"
-        alt="Coastal retreat lounge with natural materials and warm textures"
-        class="h-auto w-full"
-      />
+    <div class="relative mt-10 aspect-[16/9] w-full overflow-hidden md:mt-12 md:aspect-[21/9]">
+      <video
+        id="hero-video"
+        class="h-full w-full object-cover"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="auto"
+        poster="/videos/hero-poster.jpg"
+      >
+        <source src="/videos/hero-loop.mp4" type="video/mp4" />
+      </video>
+      <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/30 via-transparent to-transparent">
+      </div>
+      <p class="coord-mark absolute bottom-4 left-4 bg-canvas/70 px-2 py-1 backdrop-blur-sm">
+        {SITE.name} — studio work, {SITE.address.city}
+      </p>
     </div>
-    <p class="coord-mark mt-4">
-      {SITE.name} — studio work, {SITE.address.city}
-    </p>
   </section>
+
+  <script>
+    // Belt-and-braces: some browsers occasionally ignore the declarative
+    // `autoplay` attribute (e.g. after bfcache restores), so also try
+    // starting playback programmatically. Muted playback doesn't need a
+    // user gesture, so this should succeed everywhere autoplay does.
+    const heroVideo = document.getElementById("hero-video") as HTMLVideoElement | null;
+    heroVideo?.play().catch(() => {});
+  </script>
 
   <!-- Art and House -->
   <section id="art-and-house" class="scroll-mt-20 border-t border-stone-light/70 bg-paper px-6 py-16 md:px-10 md:py-24">
