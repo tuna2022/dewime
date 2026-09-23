@@ -1,5 +1,6 @@
 ---
 import { SITE, NAV_LINKS } from "../consts";
+import InstagramIcon from "./InstagramIcon.astro";
 ---
 
 <header
@@ -35,17 +36,29 @@ import { SITE, NAV_LINKS } from "../consts";
       }
     </nav>
 
-    <button
-      id="menu-toggle"
-      type="button"
-      class="flex flex-col gap-1.5 md:hidden"
-      aria-expanded="false"
-      aria-controls="mobile-menu"
-      aria-label="Toggle menu"
-    >
-      <span class="h-px w-6 bg-ink"></span>
-      <span class="h-px w-6 bg-ink"></span>
-    </button>
+    <div class="flex items-center gap-4">
+      <a
+        href={SITE.social.instagram}
+        target="_blank"
+        rel="noopener"
+        aria-label={`${SITE.name} on Instagram`}
+        class="text-stone transition-colors hover:text-ink"
+      >
+        <InstagramIcon class="h-5 w-5" />
+      </a>
+
+      <button
+        id="menu-toggle"
+        type="button"
+        class="flex flex-col gap-1.5 md:hidden"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+        aria-label="Toggle menu"
+      >
+        <span class="h-px w-6 bg-ink"></span>
+        <span class="h-px w-6 bg-ink"></span>
+      </button>
+    </div>
   </div>
 
   <nav

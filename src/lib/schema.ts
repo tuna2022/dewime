@@ -35,6 +35,7 @@ export function organizationSchema() {
       name: city,
     })),
     knowsAbout: SITE.keywords,
+    sameAs: [SITE.social.instagram],
   };
 }
 

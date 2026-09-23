@@ -32,7 +32,7 @@ export const SITE = {
   // "areaServed" so Turkish city-level searches have something to match.
   areaServed: ["Istanbul", "Bodrum", "Izmir", "Ankara", "Antalya"],
   social: {
-    instagram: "https://instagram.com/dewime",
+    instagram: "https://www.instagram.com/design_without_memories",
     linkedin: "https://linkedin.com/company/dewime",
     pinterest: "https://pinterest.com/dewime",
   },
