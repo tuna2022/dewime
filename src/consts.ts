@@ -15,7 +15,7 @@ export const SITE = {
   descriptionTr:
     "Design Without Memories, İstanbul merkezli bir iç mimari ve uygulama stüdyosudur — ev dekorasyonu, duvar dekorasyonu, kanvas tablo ve ofis dekorasyonunu konseptten anahtar teslime kadar hayata geçirir.",
   founded: "2026",
-  email: "tunakocayurt@gmail.com",
+  email: "info@dewime.com",
   phone: "+90 543 570 12 79",
   phoneDisplay: "+90 543 570 12 79",
   address: {
