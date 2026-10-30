@@ -24,6 +24,28 @@ const behindTheScenesGallery = [
   { src: "tuna-a13.jpg", alt: "Terracotta sarcophagi on display at the Istanbul Archaeology Museum" },
   { src: "tuna-a14.jpg", alt: "Mirrored display pavilion inside a hall at Topkapı Palace Museum" },
 ] as const;
+
+// High-resolution museum photographs, shown edge to edge below the gallery.
+const fullWidthPhotos = [
+  {
+    src: "istanbul-archaeology-museum-gallery.jpg",
+    alt: "Gallery at the Istanbul Archaeology Museum with lit display cases, patterned screens and a circular projection table",
+    width: 2400,
+    height: 1350,
+  },
+  {
+    src: "istanbul-archaeology-museum-enfilade.jpg",
+    alt: "Enfilade of galleries at the Istanbul Archaeology Museum, display cases of ceramics and jewelry either side of a projection table",
+    width: 2400,
+    height: 1350,
+  },
+  {
+    src: "topkapi-palace-mirrored-pavilions.jpg",
+    alt: "Mirrored display pavilions under ring-shaped light fittings at Topkapı Palace Museum, showing gilded candlesticks and ceremonial objects",
+    width: 2400,
+    height: 1695,
+  },
+] as const;
 ---
 
 <BaseLayout
@@ -52,6 +74,22 @@ const behindTheScenesGallery = [
         }
       </div>
     </div>
+  </section>
+
+  <section class="mt-16 flex flex-col gap-2 md:mt-24 md:gap-4">
+    {
+      fullWidthPhotos.map((img) => (
+        <img
+          src={`/images/about/${img.src}`}
+          alt={img.alt}
+          width={img.width}
+          height={img.height}
+          class="block h-auto w-full"
+          loading="lazy"
+          decoding="async"
+        />
+      ))
+    }
   </section>
 
   <section class="border-b border-stone-light/70 px-6 pt-16 pb-12 md:px-10 md:pt-24 md:pb-16">
