@@ -1,0 +1,63 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import PlaceholderPlate from "../../components/PlaceholderPlate.astro";
+import { SITE } from "../../consts";
+import { breadcrumbSchema } from "../../lib/schema";
+
+const capabilities = (await getCollection("capabilities")).sort((a, b) => a.data.order - b.data.order);
+
+const jsonLd = breadcrumbSchema([
+  { name: "Home", path: "/" },
+  { name: "Capabilities", path: "/capabilities" },
+]);
+---
+
+<BaseLayout
+  title="Capabilities"
+  description={`Metalwork, woodwork, stonework and glasswork — the workshop crafts behind ${SITE.name}'s bespoke pieces, made in ${SITE.address.city}, Türkiye.`}
+  path="/capabilities"
+  jsonLd={jsonLd}
+>
+  <section class="px-6 pt-16 pb-12 md:px-10 md:pt-24">
+    <div class="mx-auto max-w-6xl">
+      <p class="coord-mark">Workshop</p>
+      <h1 class="mt-3 font-display text-4xl text-ink md:text-5xl">Capabilities</h1>
+    </div>
+  </section>
+
+  <section class="border-t border-stone-light/70 bg-paper px-6 py-16 md:px-10 md:py-24">
+    <div class="mx-auto grid max-w-6xl gap-10 md:grid-cols-2">
+      {
+        capabilities.map((capability, i) => {
+          const cover = capability.data.photos[0];
+          return (
+            <a href={`/capabilities/${capability.id}`} class="group block">
+              <div class="aspect-[16/9] w-full overflow-hidden">
+                {cover ? (
+                  <img
+                    src={cover.src}
+                    alt={cover.alt}
+                    width={cover.width}
+                    height={cover.height}
+                    class="hover-zoom h-full w-full object-cover"
+                    loading="lazy"
+                  />
+                ) : (
+                  <PlaceholderPlate label={capability.data.title} seed={i + 11} class="h-full w-full" />
+                )}
+              </div>
+              <h2 class="mt-4 font-display text-2xl text-ink group-hover:text-patina">
+                {capability.data.title}
+              </h2>
+              <p class="mt-1 font-mono text-xs uppercase tracking-[0.1em] text-stone" lang="tr">
+                {capability.data.titleTr}
+              </p>
+              <p class="mt-3 text-ink/75">{capability.data.summary}</p>
+            </a>
+          );
+        })
+      }
+    </div>
+  </section>
+</BaseLayout>

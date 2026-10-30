@@ -10,6 +10,7 @@ export const GET: APIRoute = async () => {
   const projects = (await getCollection("interiorProjects")).sort((a, b) => a.data.order - b.data.order);
   const products = (await getCollection("products")).sort((a, b) => a.data.order - b.data.order);
   const faq = (await getCollection("faq")).sort((a, b) => a.data.order - b.data.order);
+  const capabilities = (await getCollection("capabilities")).sort((a, b) => a.data.order - b.data.order);
 
   const lines = [
     `# ${SITE.name}`,
@@ -35,12 +36,16 @@ export const GET: APIRoute = async () => {
       (p) => `- [${p.data.title} (${p.data.year})](${SITE.domain}/products/${p.id}): ${p.data.summary}`
     ),
     "",
+    "## Capabilities",
+    ...capabilities.map(
+      (c) => `- [${c.data.title} / ${c.data.titleTr}](${SITE.domain}/capabilities/${c.id}): ${c.data.summary}`
+    ),
+    "",
     "## Frequently asked questions",
     ...faq.map((f) => `- [${f.data.question}](${SITE.domain}/#faq)`),
     "",
     "## About",
     `- [About](${SITE.domain}/about): background, team and how ${SITE.name} works.`,
-    `- [Metalworks](${SITE.domain}/metalworks): photographs of the metal workshop — cutting, grinding, turning and welding steel.`,
     `- [Contact](${SITE.domain}/contact): ${SITE.email}, ${SITE.phoneDisplay}.`,
   ];
 

@@ -43,22 +43,48 @@ import InstagramIcon from "./InstagramIcon.astro";
       </div>
     </div>
 
-    <!-- Only from xl up: below that the nine links don't fit on one line, so they live in the toggle menu. -->
+    <!-- Only from xl up: below that the links don't fit on one line, so they live in the toggle menu. -->
     <nav class="mt-3 hidden items-center justify-between gap-5 xl:flex" aria-label="Primary">
       {
-        NAV_LINKS.map((link) => (
-          <a
-            href={link.href}
-            class:list={[
-              "whitespace-nowrap font-mono text-xs uppercase tracking-[0.1em] transition-colors",
-              link.href === "/design-with-memory"
-                ? "text-red-600 hover:text-red-800"
-                : "text-stone hover:text-ink",
-            ]}
-          >
-            {link.label}
-          </a>
-        ))
+        NAV_LINKS.map((link) =>
+          "children" in link ? (
+            <div class="group relative">
+              <a
+                href={link.href}
+                class="inline-flex items-center gap-1.5 whitespace-nowrap font-mono text-xs uppercase tracking-[0.1em] text-stone transition-colors hover:text-ink group-focus-within:text-ink group-hover:text-ink"
+              >
+                {link.label}
+                <span aria-hidden="true" class="text-[0.6rem]">▾</span>
+              </a>
+              <div class="invisible absolute top-full left-0 z-50 pt-3 opacity-0 transition-opacity group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100">
+                <ul class="min-w-44 border border-stone-light/70 bg-canvas py-2 shadow-sm">
+                  {link.children.map((child) => (
+                    <li>
+                      <a
+                        href={child.href}
+                        class="block whitespace-nowrap px-4 py-2 font-mono text-xs uppercase tracking-[0.1em] text-stone transition-colors hover:bg-paper hover:text-ink"
+                      >
+                        {child.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          ) : (
+            <a
+              href={link.href}
+              class:list={[
+                "whitespace-nowrap font-mono text-xs uppercase tracking-[0.1em] transition-colors",
+                link.href === "/design-with-memory"
+                  ? "text-red-600 hover:text-red-800"
+                  : "text-stone hover:text-ink",
+              ]}
+            >
+              {link.label}
+            </a>
+          )
+        )
       }
     </nav>
   </div>
@@ -70,17 +96,28 @@ import InstagramIcon from "./InstagramIcon.astro";
   >
     {
       NAV_LINKS.map((link) => (
-        <a
-          href={link.href}
-          class:list={[
-            "py-2 font-mono text-sm uppercase tracking-[0.14em]",
-            link.href === "/design-with-memory"
-              ? "text-red-600 hover:text-red-800"
-              : "text-stone hover:text-ink",
-          ]}
-        >
-          {link.label}
-        </a>
+        <>
+          <a
+            href={link.href}
+            class:list={[
+              "py-2 font-mono text-sm uppercase tracking-[0.14em]",
+              link.href === "/design-with-memory"
+                ? "text-red-600 hover:text-red-800"
+                : "text-stone hover:text-ink",
+            ]}
+          >
+            {link.label}
+          </a>
+          {"children" in link &&
+            link.children.map((child) => (
+              <a
+                href={child.href}
+                class="border-l border-stone-light py-1.5 pl-4 font-mono text-xs uppercase tracking-[0.14em] text-stone hover:text-ink"
+              >
+                {child.label}
+              </a>
+            ))}
+        </>
       ))
     }
   </nav>

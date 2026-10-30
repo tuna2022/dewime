@@ -1,0 +1,67 @@
+---
+import { getCollection, type CollectionEntry } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { breadcrumbSchema } from "../../lib/schema";
+
+export async function getStaticPaths() {
+  const capabilities = await getCollection("capabilities");
+  return capabilities.map((capability) => ({
+    params: { id: capability.id },
+    props: { capability },
+  }));
+}
+
+interface Props {
+  capability: CollectionEntry<"capabilities">;
+}
+
+const { capability } = Astro.props;
+const { title, titleTr, summary, photos } = capability.data;
+const path = `/capabilities/${capability.id}`;
+
+const jsonLd = breadcrumbSchema([
+  { name: "Home", path: "/" },
+  { name: "Capabilities", path: "/capabilities" },
+  { name: title, path },
+]);
+---
+
+<BaseLayout title={title} description={summary} path={path} jsonLd={jsonLd}>
+  <section class="px-6 pt-16 pb-10 md:px-10 md:pt-24">
+    <div class="mx-auto max-w-6xl">
+      <a
+        href="/capabilities"
+        class="font-mono text-xs uppercase tracking-[0.14em] text-stone hover:text-ink"
+      >
+        ← Capabilities
+      </a>
+      <p class="coord-mark mt-6">Workshop</p>
+      <h1 class="mt-3 font-display text-4xl text-ink md:text-5xl">{title}</h1>
+      <p class="mt-1 font-mono text-xs uppercase tracking-[0.1em] text-stone" lang="tr">{titleTr}</p>
+      <p class="mt-6 max-w-2xl text-lg text-ink/75">{summary}</p>
+    </div>
+  </section>
+
+  {
+    photos.length > 0 ? (
+      <section class="flex flex-col gap-2 pb-16 md:gap-4 md:pb-24">
+        {photos.map((photo, i) => (
+          <img
+            src={photo.src}
+            alt={photo.alt}
+            width={photo.width}
+            height={photo.height}
+            loading={i === 0 ? "eager" : "lazy"}
+            class="block h-auto w-full"
+          />
+        ))}
+      </section>
+    ) : (
+      <section class="px-6 pb-16 md:px-10 md:pb-24">
+        <p class="mx-auto max-w-6xl font-mono text-xs uppercase tracking-[0.14em] text-stone">
+          Photographs coming soon.
+        </p>
+      </section>
+    )
+  }
+</BaseLayout>

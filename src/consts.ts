@@ -73,7 +73,17 @@ export const NAV_LINKS = [
   { href: "/#art-and-house", label: "Art and House" },
   { href: "/interior-projects", label: "Interior Projects" },
   { href: "/products", label: "Products Design" },
-  { href: "/metalworks", label: "Metalworks" },
+  {
+    href: "/capabilities",
+    label: "Capabilities",
+    // Shown as a dropdown in the desktop nav and indented in the mobile menu.
+    children: [
+      { href: "/capabilities/metalwork", label: "Metalwork" },
+      { href: "/capabilities/woodwork", label: "Woodwork" },
+      { href: "/capabilities/stonework", label: "Stonework" },
+      { href: "/capabilities/glasswork", label: "Glasswork" },
+    ],
+  },
   { href: "/practice", label: "Practice" },
   { href: "/contact", label: "Contact Us" },
 ] as const;

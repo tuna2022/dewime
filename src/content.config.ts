@@ -53,4 +53,26 @@ const faq = defineCollection({
   }),
 });
 
-export const collections = { practice, interiorProjects, products, faq };
+// Craft disciplines listed under "Capabilities" in the nav. Each entry is a
+// full-width photo page; an empty `photos` list renders a "coming soon" note.
+const capabilities = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/content/capabilities" }),
+  schema: z.object({
+    title: z.string(),
+    titleTr: z.string(),
+    order: z.number(),
+    summary: z.string(),
+    photos: z
+      .array(
+        z.object({
+          src: z.string(),
+          alt: z.string(),
+          width: z.number(),
+          height: z.number(),
+        })
+      )
+      .default([]),
+  }),
+});
+
+export const collections = { practice, interiorProjects, products, faq, capabilities };
