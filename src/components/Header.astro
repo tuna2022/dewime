@@ -24,7 +24,12 @@ import InstagramIcon from "./InstagramIcon.astro";
         NAV_LINKS.map((link) => (
           <a
             href={link.href}
-            class="whitespace-nowrap font-mono text-[0.65rem] uppercase tracking-[0.1em] text-stone transition-colors hover:text-ink lg:text-xs"
+            class:list={[
+              "whitespace-nowrap font-mono text-[0.65rem] uppercase tracking-[0.1em] transition-colors lg:text-xs",
+              link.href === "/design-with-memory"
+                ? "text-red-600 hover:text-red-800"
+                : "text-stone hover:text-ink",
+            ]}
           >
             {link.label}
           </a>
@@ -66,7 +71,12 @@ import InstagramIcon from "./InstagramIcon.astro";
       NAV_LINKS.map((link) => (
         <a
           href={link.href}
-          class="py-2 font-mono text-sm uppercase tracking-[0.14em] text-stone hover:text-ink"
+          class:list={[
+            "py-2 font-mono text-sm uppercase tracking-[0.14em]",
+            link.href === "/design-with-memory"
+              ? "text-red-600 hover:text-red-800"
+              : "text-stone hover:text-ink",
+          ]}
         >
           {link.label}
         </a>
