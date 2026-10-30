@@ -81,31 +81,17 @@ const artHouseGallery = [
     </div>
 
     <div class="relative mx-auto mt-10 aspect-[16/9] w-full max-w-[1280px] overflow-hidden md:mt-12">
-      <video
-        id="hero-video"
+      <img
+        src="/images/home/stonemason-measuring-stone.jpg"
+        alt="Craftsman measuring a rough-cut stone block with a steel square in a stone workshop"
+        width="1448"
+        height="1086"
         class="h-full w-full object-cover"
-        autoplay
-        muted
-        loop
-        playsinline
-        preload="auto"
-        poster="/videos/hero-poster.jpg"
-      >
-        <source src="/videos/hero-loop.mp4" type="video/mp4" />
-      </video>
+      />
       <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/30 via-transparent to-transparent">
       </div>
     </div>
   </section>
-
-  <script>
-    // Belt-and-braces: some browsers occasionally ignore the declarative
-    // `autoplay` attribute (e.g. after bfcache restores), so also try
-    // starting playback programmatically. Muted playback doesn't need a
-    // user gesture, so this should succeed everywhere autoplay does.
-    const heroVideo = document.getElementById("hero-video") as HTMLVideoElement | null;
-    heroVideo?.play().catch(() => {});
-  </script>
 
   <!-- Art and House -->
   <section id="art-and-house" class="scroll-mt-20 border-t border-stone-light/70 bg-paper px-6 py-16 md:px-10 md:py-24">
