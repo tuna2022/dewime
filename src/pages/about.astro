@@ -8,44 +8,35 @@ const jsonLd = breadcrumbSchema([
   { name: "About", path: "/about" },
 ]);
 
-const behindTheScenesGallery = [
-  { src: "tuna-a1.jpg", alt: "Grinding and fitting metal at the workbench, welding helmet raised", feature: true },
-  { src: "tuna-a5.jpg", alt: "On site inside a historic building under restoration, steel armature rising through the room", feature: true },
-  { src: "tuna-a7.jpg", alt: "Examining a gem-set ceremonial Ottoman helmet by hand" },
-  { src: "tuna-a2.jpg", alt: "Arranging antique silver flatware for a collection review" },
-  { src: "tuna-a3.jpg", alt: "Mounting ancient bead necklaces inside a museum display case" },
-  { src: "tuna-a6.jpg", alt: "Cataloguing archaeological objects in a museum display case" },
-  { src: "tuna-a4.jpg", alt: "Welding at the bench, kneeling beside the workshop table" },
-  { src: "tuna-a9.jpg", alt: "Restoration bench work on a blue-and-white ceramic piece" },
-  { src: "tuna-a11.jpg", alt: "Cataloguing ancient jewelry and beadwork beside a laptop of archive records" },
-  { src: "tuna-a8.jpg", alt: "Grinding steel while a film crew records the process" },
-  { src: "tuna-a10.jpg", alt: "At work in the workshop" },
-  { src: "tuna-a12.jpg", alt: "Marble sarcophagus gallery at the Istanbul Archaeology Museum", feature: true },
-  { src: "tuna-a13.jpg", alt: "Terracotta sarcophagi on display at the Istanbul Archaeology Museum" },
-  { src: "tuna-a14.jpg", alt: "Mirrored display pavilion inside a hall at Topkapı Palace Museum" },
+// Behind-the-scenes photos shown large, row by row: landscape shots take a full
+// row, portrait shots sit side by side so nothing is upscaled past its native
+// 1100px. Portraits in a row are cropped to a shared 3:4 so they line up.
+const behindTheScenesRows = [
+  [
+    { src: "tuna-a1.jpg", alt: "Grinding and fitting metal at the workbench, welding helmet raised" },
+    { src: "tuna-a5.jpg", alt: "On site inside a historic building under restoration, steel armature rising through the room" },
+  ],
+  [{ src: "tuna-a12.jpg", alt: "Marble sarcophagus gallery at the Istanbul Archaeology Museum" }],
+  [
+    { src: "tuna-a7.jpg", alt: "Examining a gem-set ceremonial Ottoman helmet by hand" },
+    { src: "tuna-a2.jpg", alt: "Arranging antique silver flatware for a collection review" },
+    { src: "tuna-a3.jpg", alt: "Mounting ancient bead necklaces inside a museum display case" },
+  ],
+  [{ src: "tuna-a8.jpg", alt: "Grinding steel while a film crew records the process" }],
+  [
+    { src: "tuna-a6.jpg", alt: "Cataloguing archaeological objects in a museum display case" },
+    { src: "tuna-a4.jpg", alt: "Welding at the bench, kneeling beside the workshop table" },
+  ],
+  [{ src: "tuna-a13.jpg", alt: "Terracotta sarcophagi on display at the Istanbul Archaeology Museum" }],
+  [
+    { src: "tuna-a9.jpg", alt: "Restoration bench work on a blue-and-white ceramic piece" },
+    { src: "tuna-a11.jpg", alt: "Cataloguing ancient jewelry and beadwork beside a laptop of archive records" },
+  ],
+  [{ src: "tuna-a10.jpg", alt: "At work in the workshop" }],
+  [{ src: "tuna-a14.jpg", alt: "Mirrored display pavilion inside a hall at Topkapı Palace Museum" }],
 ] as const;
 
-// High-resolution museum photographs, shown edge to edge below the gallery.
-const fullWidthPhotos = [
-  {
-    src: "istanbul-archaeology-museum-gallery.jpg",
-    alt: "Gallery at the Istanbul Archaeology Museum with lit display cases, patterned screens and a circular projection table",
-    width: 2400,
-    height: 1350,
-  },
-  {
-    src: "istanbul-archaeology-museum-enfilade.jpg",
-    alt: "Enfilade of galleries at the Istanbul Archaeology Museum, display cases of ceramics and jewelry either side of a projection table",
-    width: 2400,
-    height: 1350,
-  },
-  {
-    src: "topkapi-palace-mirrored-pavilions.jpg",
-    alt: "Mirrored display pavilions under ring-shaped light fittings at Topkapı Palace Museum, showing gilded candlesticks and ceremonial objects",
-    width: 2400,
-    height: 1695,
-  },
-] as const;
+const rowCols = { 1: "md:grid-cols-1", 2: "md:grid-cols-2", 3: "md:grid-cols-3" } as const;
 ---
 
 <BaseLayout
@@ -57,39 +48,24 @@ const fullWidthPhotos = [
   <section class="px-6 pt-16 md:px-10 md:pt-24">
     <div class="mx-auto max-w-6xl">
       <p class="coord-mark">Museum practitioner</p>
-      <div class="mt-6 grid grid-cols-2 gap-4 md:grid-cols-4 md:auto-rows-[200px] md:grid-flow-dense md:gap-6">
+      <div class="mt-6 flex flex-col gap-4 md:gap-6">
         {
-          behindTheScenesGallery.map((img) => (
-            <img
-              src={`/images/about/${img.src}`}
-              alt={img.alt}
-              class={`hover-zoom aspect-[4/3] h-full w-full object-cover ${
-                "feature" in img && img.feature
-                  ? "col-span-2 aspect-auto md:row-span-2"
-                  : ""
-              }`}
-              loading="lazy"
-            />
+          behindTheScenesRows.map((row) => (
+            <div class={`grid grid-cols-1 gap-4 md:gap-6 ${rowCols[row.length]}`}>
+              {row.map((img) => (
+                <img
+                  src={`/images/about/${img.src}`}
+                  alt={img.alt}
+                  class={`block w-full ${row.length > 1 ? "aspect-[3/4] object-cover" : "h-auto"}`}
+                  loading="lazy"
+                  decoding="async"
+                />
+              ))}
+            </div>
           ))
         }
       </div>
     </div>
-  </section>
-
-  <section class="mt-16 flex flex-col gap-2 md:mt-24 md:gap-4">
-    {
-      fullWidthPhotos.map((img) => (
-        <img
-          src={`/images/about/${img.src}`}
-          alt={img.alt}
-          width={img.width}
-          height={img.height}
-          class="block h-auto w-full"
-          loading="lazy"
-          decoding="async"
-        />
-      ))
-    }
   </section>
 
   <section class="border-b border-stone-light/70 px-6 pt-16 pb-12 md:px-10 md:pt-24 md:pb-16">
