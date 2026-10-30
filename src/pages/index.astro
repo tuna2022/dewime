@@ -19,18 +19,21 @@ const faqJsonLd = faqSchema(
   }))
 );
 
+// Order matters for the grid: two features, four small, two features, four small,
+// so both the 4-column desktop bento and the 2-column mobile grid close every row.
 const artHouseGallery = [
-  { src: "large-abstract-artwork-living-room.jpg", alt: "Large abstract artwork above a travertine console in a contemporary living room", feature: true },
-  { src: "art-nouveau-salon-painting.jpg", alt: "Abstract painting above a console table in an Art Nouveau salon", feature: true },
-  { src: "bosphorus-painting-istanbul-apartment.jpg", alt: "Gilt-framed Bosphorus painting in an old Istanbul apartment", feature: true },
-  { src: "painting-on-wooden-wall.jpg", alt: "Abstract painting on a warm-toned wooden wall" },
-  { src: "coastal-painting-mediterranean-home.jpg", alt: "Calm coastal painting above a reclaimed-wood sideboard in a Mediterranean home" },
-  { src: "metal-sculpture-walnut-table.jpg", alt: "Elegant metal sculpture on a walnut coffee table" },
-  { src: "stone-sculpture-walnut-table.jpg", alt: "Elegant stone sculpture on a walnut dining table" },
-  { src: "plaster-sculpture-green-marble.jpg", alt: "Plaster sculpture on a green marble coffee table" },
-  { src: "contemporary-painting-compact-living-room.jpg", alt: "Contemporary abstract painting in a compact living room" },
-  { src: "contemporary-painting-brick-wall.jpg", alt: "Large contemporary painting on an exposed brick wall" },
-  { src: "abstract-painting-stone-farmhouse.jpg", alt: "Abstract painting on a stone wall in a rustic farmhouse living room" },
+  { src: "artist-studio-printmaking-workshop.jpg", alt: "Sunlit artist's studio with a printmaking press, framed paintings and hand-printed shirts hung to dry", feature: true },
+  { src: "fingerprint-pattern-metal-garden-gate.jpg", alt: "Bronze-finish garden gate laser-cut in a fingerprint pattern between lit rendered walls", feature: true },
+  { src: "bronze-handrail-lit-staircase.jpg", alt: "Folded bronze handrail returning into a plaster wall above an oak staircase with lit treads" },
+  { src: "timber-lattice-folding-shutters.jpg", alt: "Folding timber lattice shutters casting a grid of light across a white facade" },
+  { src: "carved-stone-door-surround.jpg", alt: "Hand-carved stone door surround with palm and wave relief at a garden entrance" },
+  { src: "natural-stone-garden-steps.jpg", alt: "Rough natural stone garden steps beside a lit travertine terrace and planted beds" },
+  { src: "brick-garden-pavilion.jpg", alt: "Brick-walled garden pavilion with full-height glazing under mature trees", feature: true },
+  { src: "graffiti-mural-office-lounge.jpg", alt: "Large graffiti mural behind a blue sofa and leather lounge chairs in an industrial office", feature: true },
+  { src: "steel-balcony-railing.jpg", alt: "Bolted steel balcony with a horizontal rod railing against a clear sky" },
+  { src: "timber-lattice-panel-workshop.jpg", alt: "Interlocking timber lattice panel being assembled on a workbench in the joinery shop" },
+  { src: "black-slatted-balconies-brick-facade.jpg", alt: "Black vertical-slat balconies projecting from a brick facade at sunset" },
+  { src: "corten-steel-planters-entrance.jpg", alt: "Angled corten steel planters with trailing plants at a timber-clad entrance" },
 ] as const;
 ---
 
