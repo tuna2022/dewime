@@ -69,7 +69,6 @@ export const SITE = {
 
 export const NAV_LINKS = [
   { href: "/about", label: "About" },
-  { href: "/non-places", label: "Non-Places" },
   { href: "/design-with-memory", label: "Design with Memory" },
   { href: "/#art-and-house", label: "Art and House" },
   { href: "/interior-projects", label: "Interior Projects" },
