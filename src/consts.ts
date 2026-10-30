@@ -74,6 +74,7 @@ export const NAV_LINKS = [
   { href: "/#art-and-house", label: "Art and House" },
   { href: "/interior-projects", label: "Interior Projects" },
   { href: "/products", label: "Products Design" },
+  { href: "/metalworks", label: "Metalworks" },
   { href: "/practice", label: "Practice" },
   { href: "/contact", label: "Contact Us" },
 ] as const;

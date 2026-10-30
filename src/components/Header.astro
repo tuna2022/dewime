@@ -6,26 +6,51 @@ import InstagramIcon from "./InstagramIcon.astro";
 <header
   class="sticky top-0 z-50 border-b border-stone-light/70 bg-canvas/85 backdrop-blur"
 >
-  <div
-    class="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-x-6 gap-y-2 px-6 py-4 md:px-10"
-  >
-    <a href="/" class="leading-none">
-      <img
-        src="/images/logo/dewimelogo-crop.png"
-        alt="DeWiMe"
-        width="544"
-        height="129"
-        class="h-7 w-auto lg:h-8"
-      />
-    </a>
+  <div class="mx-auto max-w-6xl px-6 py-4 md:px-10">
+    <div class="flex items-center justify-between gap-6">
+      <a href="/" class="leading-none">
+        <img
+          src="/images/logo/dewimelogo-crop.png"
+          alt="DeWiMe"
+          width="544"
+          height="129"
+          class="h-7 w-auto lg:h-8"
+        />
+      </a>
 
-    <nav class="hidden items-center gap-5 md:flex lg:gap-6" aria-label="Primary">
+      <div class="flex items-center gap-4">
+        <a
+          href={SITE.social.instagram}
+          target="_blank"
+          rel="noopener"
+          aria-label={`${SITE.name} on Instagram`}
+          class="text-stone transition-colors hover:text-ink"
+        >
+          <InstagramIcon class="h-5 w-5" />
+        </a>
+
+        <button
+          id="menu-toggle"
+          type="button"
+          class="flex flex-col gap-1.5 xl:hidden"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+          aria-label="Toggle menu"
+        >
+          <span class="h-px w-6 bg-ink"></span>
+          <span class="h-px w-6 bg-ink"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Only from xl up: below that the nine links don't fit on one line, so they live in the toggle menu. -->
+    <nav class="mt-3 hidden items-center justify-between gap-5 xl:flex" aria-label="Primary">
       {
         NAV_LINKS.map((link) => (
           <a
             href={link.href}
             class:list={[
-              "whitespace-nowrap font-mono text-[0.65rem] uppercase tracking-[0.1em] transition-colors lg:text-xs",
+              "whitespace-nowrap font-mono text-xs uppercase tracking-[0.1em] transition-colors",
               link.href === "/design-with-memory"
                 ? "text-red-600 hover:text-red-800"
                 : "text-stone hover:text-ink",
@@ -36,35 +61,11 @@ import InstagramIcon from "./InstagramIcon.astro";
         ))
       }
     </nav>
-
-    <div class="flex items-center gap-4">
-      <a
-        href={SITE.social.instagram}
-        target="_blank"
-        rel="noopener"
-        aria-label={`${SITE.name} on Instagram`}
-        class="text-stone transition-colors hover:text-ink"
-      >
-        <InstagramIcon class="h-5 w-5" />
-      </a>
-
-      <button
-        id="menu-toggle"
-        type="button"
-        class="flex flex-col gap-1.5 md:hidden"
-        aria-expanded="false"
-        aria-controls="mobile-menu"
-        aria-label="Toggle menu"
-      >
-        <span class="h-px w-6 bg-ink"></span>
-        <span class="h-px w-6 bg-ink"></span>
-      </button>
-    </div>
   </div>
 
   <nav
     id="mobile-menu"
-    class="hidden flex-col gap-1 border-t border-stone-light/70 bg-canvas px-6 py-4 md:hidden"
+    class="hidden flex-col gap-1 border-t border-stone-light/70 bg-canvas px-6 py-4 xl:hidden"
     aria-label="Primary mobile"
   >
     {

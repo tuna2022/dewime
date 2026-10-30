@@ -40,6 +40,7 @@ export const GET: APIRoute = async () => {
     "",
     "## About",
     `- [About](${SITE.domain}/about): background, team and how ${SITE.name} works.`,
+    `- [Metalworks](${SITE.domain}/metalworks): photographs of the metal workshop — cutting, grinding, turning and welding steel.`,
     `- [Contact](${SITE.domain}/contact): ${SITE.email}, ${SITE.phoneDisplay}.`,
   ];
 
