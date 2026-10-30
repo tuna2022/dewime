@@ -20,20 +20,21 @@ const faqJsonLd = faqSchema(
 );
 
 // Order matters for the grid: two features, four small, two features, four small,
-// so both the 4-column desktop bento and the 2-column mobile grid close every row.
+// so both the 4-column desktop grid and the 2-column mobile grid close every row.
+// Each photo is shown with its caption underneath.
 const artHouseGallery = [
-  { src: "artist-studio-printmaking-workshop.jpg", alt: "Sunlit artist's studio with a printmaking press, framed paintings and hand-printed shirts hung to dry", feature: true },
-  { src: "fingerprint-pattern-metal-garden-gate.jpg", alt: "Bronze-finish garden gate laser-cut in a fingerprint pattern between lit rendered walls", feature: true },
-  { src: "bronze-handrail-lit-staircase.jpg", alt: "Folded bronze handrail returning into a plaster wall above an oak staircase with lit treads" },
-  { src: "timber-lattice-folding-shutters.jpg", alt: "Folding timber lattice shutters casting a grid of light across a white facade" },
-  { src: "carved-stone-door-surround.jpg", alt: "Hand-carved stone door surround with palm and wave relief at a garden entrance" },
-  { src: "natural-stone-garden-steps.jpg", alt: "Rough natural stone garden steps beside a lit travertine terrace and planted beds" },
-  { src: "brick-garden-pavilion.jpg", alt: "Brick-walled garden pavilion with full-height glazing under mature trees", feature: true },
-  { src: "graffiti-mural-office-lounge.jpg", alt: "Large graffiti mural behind a blue sofa and leather lounge chairs in an industrial office", feature: true },
-  { src: "steel-balcony-railing.jpg", alt: "Bolted steel balcony with a horizontal rod railing against a clear sky" },
-  { src: "timber-lattice-panel-workshop.jpg", alt: "Interlocking timber lattice panel being assembled on a workbench in the joinery shop" },
-  { src: "black-slatted-balconies-brick-facade.jpg", alt: "Black vertical-slat balconies projecting from a brick facade at sunset" },
-  { src: "corten-steel-planters-entrance.jpg", alt: "Angled corten steel planters with trailing plants at a timber-clad entrance" },
+  { src: "artist-studio-printmaking-workshop.jpg", caption: "A working studio, where prints, paintings and objects are made by hand.", alt: "Sunlit artist's studio with a printmaking press, framed paintings and hand-printed shirts hung to dry", feature: true },
+  { src: "fingerprint-pattern-metal-garden-gate.jpg", caption: "A garden gate cut from steel in the pattern of a fingerprint.", alt: "Bronze-finish garden gate laser-cut in a fingerprint pattern between lit rendered walls", feature: true },
+  { src: "bronze-handrail-lit-staircase.jpg", caption: "A folded bronze handrail, lit softly from beneath.", alt: "Folded bronze handrail returning into a plaster wall above an oak staircase with lit treads" },
+  { src: "timber-lattice-folding-shutters.jpg", caption: "Timber lattice shutters that fold open and cast patterned light.", alt: "Folding timber lattice shutters casting a grid of light across a white facade" },
+  { src: "carved-stone-door-surround.jpg", caption: "A door surround carved in stone with palm and wave motifs.", alt: "Hand-carved stone door surround with palm and wave relief at a garden entrance" },
+  { src: "natural-stone-garden-steps.jpg", caption: "Rough-hewn stone steps leading up to a lit terrace.", alt: "Rough natural stone garden steps beside a lit travertine terrace and planted beds" },
+  { src: "brick-garden-pavilion.jpg", caption: "A brick-walled garden pavilion that opens onto the trees.", alt: "Brick-walled garden pavilion with full-height glazing under mature trees", feature: true },
+  { src: "graffiti-mural-office-lounge.jpg", caption: "A full-height mural turns an office lounge into a gallery.", alt: "Large graffiti mural behind a blue sofa and leather lounge chairs in an industrial office", feature: true },
+  { src: "steel-balcony-railing.jpg", caption: "A bolted steel balcony with a horizontal rod railing.", alt: "Bolted steel balcony with a horizontal rod railing against a clear sky" },
+  { src: "timber-lattice-panel-workshop.jpg", caption: "A timber lattice panel, assembled joint by joint in the workshop.", alt: "Interlocking timber lattice panel being assembled on a workbench in the joinery shop" },
+  { src: "black-slatted-balconies-brick-facade.jpg", caption: "Black slatted balconies projecting from a brick facade.", alt: "Black vertical-slat balconies projecting from a brick facade at sunset" },
+  { src: "corten-steel-planters-entrance.jpg", caption: "Angled corten planters framing a timber-clad entrance.", alt: "Angled corten steel planters with trailing plants at a timber-clad entrance" },
 ] as const;
 ---
 
@@ -101,20 +102,22 @@ const artHouseGallery = [
   <!-- Art and House -->
   <section id="art-and-house" class="scroll-mt-20 border-t border-stone-light/70 bg-paper px-6 py-16 md:px-10 md:py-24">
     <div class="mx-auto max-w-6xl">
-      <div class="grid grid-cols-2 gap-4 md:grid-cols-4 md:auto-rows-[200px] md:grid-flow-dense md:gap-6">
+      <div class="grid grid-cols-2 gap-x-4 gap-y-6 md:grid-cols-4 md:gap-x-6 md:gap-y-8">
         {
-          artHouseGallery.map((img) => (
-            <img
-              src={`/images/art-house/${img.src}`}
-              alt={img.alt}
-              class={`hover-zoom aspect-[4/3] h-full w-full object-cover ${
-                "feature" in img && img.feature
-                  ? "col-span-2 aspect-auto md:row-span-2"
-                  : ""
-              }`}
-              loading="lazy"
-            />
-          ))
+          artHouseGallery.map((img) => {
+            const feature = "feature" in img && img.feature;
+            return (
+              <figure class={feature ? "col-span-2" : ""}>
+                <img
+                  src={`/images/art-house/${img.src}`}
+                  alt={img.alt}
+                  class={`hover-zoom block w-full object-cover ${feature ? "aspect-[3/2]" : "aspect-[4/3]"}`}
+                  loading="lazy"
+                />
+                <figcaption class="mt-2 text-sm leading-snug text-ink/70">{img.caption}</figcaption>
+              </figure>
+            );
+          })
         }
       </div>
 
