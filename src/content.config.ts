@@ -80,7 +80,8 @@ const capabilities = defineCollection({
           columns: z
             .object({
               title: z.string(),
-              items: z.array(z.object({ title: z.string(), text: z.string() })),
+              // text is one paragraph, or an array of paragraphs.
+              items: z.array(z.object({ title: z.string(), text: z.union([z.string(), z.array(z.string())]) })),
             })
             .optional(),
         })
