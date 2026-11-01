@@ -2,6 +2,8 @@
 title: Stonework
 titleTr: Taş İşçiliği
 order: 3
+headline: Expertly crafted marble products.
+intro: "Each marble slab differs according to the mineral composition and geological conditions of its deposit. A block’s colour, veining and density are specific to its quarry and the depth from which it was extracted. We choose every block individually, ensuring it matches the approved samples before cutting starts."
 summary: Marble, travertine and natural stone shaped into counters, consoles, tables and architectural details.
 photos:
   - src: /images/capabilities/stonework/clay-brick-colour-samples.jpg

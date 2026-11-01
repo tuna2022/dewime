@@ -62,6 +62,11 @@ const capabilities = defineCollection({
     titleTr: z.string(),
     order: z.number(),
     summary: z.string(),
+    // Optional large statement shown at the top of the page.
+    headline: z.string().optional(),
+    // Optional intro shown under the headline in place of the summary
+    // (the summary is still used for meta descriptions and index cards).
+    intro: z.string().optional(),
     photos: z
       .array(
         z.object({
@@ -69,6 +74,15 @@ const capabilities = defineCollection({
           alt: z.string(),
           width: z.number(),
           height: z.number(),
+          // Optional text shown under the photo, one string per paragraph.
+          caption: z.array(z.string()).optional(),
+          // Optional titled block of side-by-side columns shown under the caption.
+          columns: z
+            .object({
+              title: z.string(),
+              items: z.array(z.object({ title: z.string(), text: z.string() })),
+            })
+            .optional(),
         })
       )
       .default([]),
