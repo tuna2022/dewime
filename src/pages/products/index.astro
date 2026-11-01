@@ -7,6 +7,28 @@ import { breadcrumbSchema } from "../../lib/schema";
 
 const products = (await getCollection("products")).sort((a, b) => a.data.order - b.data.order);
 
+// Natural branch pergola: timber species and assembly steps, shown under the drawings.
+const pergolaSpecies = [
+  { name: "Sweet chestnut", text: "Can be considered for natural-looking, rounded elements. Its heartwood is durable in outdoor environments; however, it should not be assumed that thin branches possess the same level of durability." },
+  { name: "Black locust (Robinia)", text: "A strong choice for outdoor applications due to its durable heartwood. Its hard structure necessitates pre-drilling holes for connections." },
+  { name: "Preservative-treated pine", text: "Suitable for use in load-bearing posts, beams, and rafters. The treatment class must be selected according to the specific outdoor conditions, including any potential ground contact." },
+];
+const pergolaAssembly = [
+  "First, the load-bearing system is dimensioned. The cross-sections of posts, main beams, and rafters are determined based on the span, the weight of the branch covering, and local wind and snow conditions. For systems attached to a wall, the connections must reach the building’s structural framework; for freestanding pergolas, the design should include cross-bracing to limit lateral movement or incorporate engineered rigid joints.",
+  "The branches are prepared prior to assembly. Pieces that are rotten, damaged by insects, or feature deep cracks in areas intended for connections should be discarded. Loose bark is removed; the branches are air-dried and sorted according to their diameter. In terms of project design, an arrangement where branches are installed individually—allowing for later replacement—offers advantages for maintenance.",
+  "Branches should be positioned perpendicular to the rafters, ensuring they span across multiple supports. The spacing and orientation of the branches can be determined by testing a sample section, based on the angle of the sun and the desired density of the shade. The spacing between supports should be selected according to the diameter, curvature, and load-bearing capacity of the branches; there is no single standard measurement applicable to all installations.",
+  "Fastening methods must be designed to prevent cracking and displacement caused by wind. Options include pre-drilling holes for exterior-grade screws or using mechanical clamps specifically designed for thinner branches. The diameter and length of the screws, their distance from the ends, and the total number of fasteners should be determined based on the actual cross-section of each branch. All fastening hardware must be compatible with any wood preservatives used; in coastal environments, the potential for corrosion must also be taken into account.",
+  "Avoid joints that trap water. Details for the tops of beams, end-grain sections, and the contact points between branches and rafters should be designed to allow for proper drying. Whenever possible, wood preservative treatments should be applied prior to assembly. During maintenance, the structure should be inspected for any loosened connections or damaged branches. This covering provides shading.",
+];
+
+// Bespoke terracotta wall: brick production stages, shown side by side under the drawings.
+const terracottaProcess = [
+  "The prepared clay is typically placed into wooden molds by hand. Depending on the technique employed, the surface of the mold is either dusted with sand or wetted to ensure the clay can be easily removed. The clay is pressed into the mold to fill the corners, and any excess material on top is scraped away. Once removed from the mold, the unfired (green) brick is placed on a flat surface where it can retain its shape. Sanded molds tend to produce rougher surfaces, while wetted molds result in smoother ones.",
+  "The bricks are dried slowly, protected from direct sunlight and strong air currents. Rapid or uneven moisture loss can lead to cracking or warping. The drying duration varies based on the properties of the clay, the thickness of the brick, and environmental conditions. When determining the dimensions of the molds, the shrinkage that occurs during drying and firing is taken into account.",
+  "Once dried, the bricks are fired in a kiln under controlled conditions and subsequently cooled. The firing temperature and duration are determined by the composition of the clay used and the desired product specifications. The mineral structure of the clay, the atmosphere within the kiln, and the temperature distribution all influence the final color and strength of the bricks.",
+  "The distinctive qualities of handmade bricks include surface markings, softened edges, and natural variations between individual pieces. However, these variations must remain within the dimensional and performance limits specified for the project. Following production, the bricks undergo checks for cracks, deformation, water absorption, and strength, ensuring that both their architectural character and technical adequacy are evaluated.",
+];
+
 const jsonLd = breadcrumbSchema([
   { name: "Home", path: "/" },
   { name: "Products Design", path: "/products" },
@@ -30,6 +52,162 @@ const jsonLd = breadcrumbSchema([
         Furniture, lighting and objects developed out of details, materials and offcuts from our
         architecture and interiors work — not designed separately from it.
       </p>
+    </div>
+  </section>
+
+  <!-- Natural branch pergola -->
+  <section class="border-t border-stone-light/70 px-6 py-12 md:px-10 md:py-20">
+    <div class="mx-auto max-w-6xl">
+      <h2 class="font-display text-3xl text-ink md:text-5xl">Natural Branch Pergola</h2>
+      <!-- The installation photo is revealed on hover (or tap/focus on touch screens). -->
+      <div class="group relative mt-8 cursor-pointer md:mt-10" tabindex="0">
+        <img
+          src="/images/products/natural-branch-pergola.jpg"
+          alt="Pergola of natural timber branches laid over squared beams, casting striped shade across a white terrace with a potted olive tree, beside a view up into the branches against a blue sky"
+          width="938"
+          height="593"
+          class="block h-auto w-full"
+        />
+        <img
+          src="/images/products/natural-branch-pergola-installation.jpg"
+          alt="Carpenter drilling a natural branch into place on a squared timber beam while laying the pergola roof"
+          class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-500 group-hover:opacity-100 group-focus:opacity-100"
+          loading="lazy"
+        />
+      </div>
+      <p class="mt-8 max-w-3xl text-ink/80 md:mt-10">
+        A natural branch pergola consists of a structural timber frame supporting closely spaced
+        branches that form a permeable shading canopy. Primary beams and secondary rafters are
+        sized according to the span, canopy weight, and site-specific wind loads, with connections
+        designed to transfer forces to the supporting walls or posts. Selected branches are dried,
+        debarked where required, and pre-drilled before being secured to the rafters with
+        corrosion-resistant fixings to reduce splitting. Branch spacing and orientation are
+        coordinated with solar exposure and the desired shading density, while allowing airflow
+        and rainwater to pass through. Exterior-grade timber protection, moisture-resistant
+        connection detailing, and access for periodic inspection and branch replacement support
+        the durability of the installation.
+      </p>
+      <img
+        src="/images/products/natural-branch-pergola-drawings.jpg"
+        alt="Line drawings of the natural branch pergola: a perspective of the canopy over a shuttered terrace, a plan of the beams and branches, and a detail of branches fixed over a squared timber beam"
+        width="1536"
+        height="1024"
+        class="mt-10 block h-auto w-full md:mt-14"
+        loading="lazy"
+      />
+      <div class="mt-10 max-w-3xl text-ink/80 md:mt-14">
+        <p>
+          In this system, the wood used for the load-bearing framework and the natural branches
+          used for shading should be selected separately.
+        </p>
+        <h3 class="mt-10 font-display text-2xl text-ink md:text-3xl">Which tree species can be used?</h3>
+        <p class="mt-4 font-mono text-xs uppercase tracking-[0.14em] text-stone">
+          Material, appropriate use, and points to consider
+        </p>
+        <dl class="mt-4 divide-y divide-stone-light/70 border-y border-stone-light/70">
+          {pergolaSpecies.map((species) => (
+            <div class="py-4 md:grid md:grid-cols-[14rem_1fr] md:gap-6">
+              <dt class="font-display text-lg text-ink">{species.name}</dt>
+              <dd class="mt-1 md:mt-0">{species.text}</dd>
+            </div>
+          ))}
+        </dl>
+        <p class="mt-6">
+          The natural durability of sweet chestnut and black locust applies primarily to their
+          heartwood. For thin branches—which often have a high proportion of bark and sapwood—the
+          species name alone is not a sufficient indicator of durability.
+        </p>
+      </div>
+      <h3 class="mt-12 font-display text-2xl text-ink md:mt-16 md:text-3xl">How should assembly be carried out?</h3>
+      <ol class="mt-8 grid gap-8 text-ink/80 md:grid-cols-2 lg:grid-cols-5 lg:gap-8">
+        {pergolaAssembly.map((step, i) => (
+          <li class="border-t border-stone-light/70 pt-4">
+            <span class="block font-display text-3xl text-ink">{i + 1}</span>
+            <p class="mt-3 text-sm">{step}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <!-- Bespoke terracotta wall -->
+  <section class="border-t border-stone-light/70 px-6 py-12 md:px-10 md:py-20">
+    <div class="mx-auto max-w-6xl">
+      <h2 class="font-display text-3xl text-ink md:text-5xl">Bespoke Terracotta Wall</h2>
+      <!-- The construction photo is revealed on hover (or tap/focus on touch screens). -->
+      <div class="group relative mt-8 cursor-pointer md:mt-10" tabindex="0">
+        <img
+          src="/images/products/bespoke-terracotta-wall.jpg"
+          alt="Offset terracotta brick screen filling a concrete frame above a covered walkway, beside tall terracotta lattice panels in a grey interior"
+          width="1024"
+          height="705"
+          class="block h-auto w-full"
+          loading="lazy"
+        />
+        <img
+          src="/images/products/bespoke-terracotta-wall-construction.jpg"
+          alt="Bricklayers on scaffolding laying the offset terracotta brick screen inside the concrete frame, with pallets of bricks below"
+          class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-500 group-hover:opacity-100 group-focus:opacity-100"
+          loading="lazy"
+        />
+      </div>
+      <div class="mt-8 max-w-3xl space-y-4 text-ink/80 md:mt-10">
+        <p>
+          The architectural character of brick is shaped by how individual units are brought
+          together. Project-specific brickwork unites the material’s texture, its bonding pattern,
+          and the precision of its execution within a cohesive design vision. Every course, every
+          mortar joint, and every void contributes to the facade as a whole.
+        </p>
+        <p>
+          On this facade, an offset brick arrangement creates a permeable surface within a concrete
+          frame. The openings between the bricks filter the light, while shifting shadows throughout
+          the day lend depth to the surface. The warm tones of the terracotta and the natural
+          variations in its texture reveal the material’s inherent character amidst a structured,
+          geometric order.
+        </p>
+        <p>
+          The translation of the design into reality relies on the careful attention of the
+          craftsperson. The alignment of the courses, the continuity of the voids, and the
+          consistency of the mortar joints ensure that the rhythm established in the drawings is
+          preserved on-site. The resulting facade embodies a unique architectural expression—one
+          shaped by the synergy between design precision and skilled craftsmanship.
+        </p>
+      </div>
+      <img
+        src="/images/products/terracotta-breeze-blocks.jpg"
+        alt="Terracotta breeze blocks: stacked hollow square units against a white wall, a lattice screen in front of an outdoor sofa, and four quatrefoil blocks joined into a pattern"
+        width="1024"
+        height="420"
+        class="mt-10 block h-auto w-full md:mt-14"
+        loading="lazy"
+      />
+      <div class="mt-8 max-w-3xl space-y-4 text-ink/80 md:mt-10">
+        <p>
+          The production of handmade bricks consists of several stages: preparing the clay, molding
+          it by hand, drying, and firing. The pressure applied by the craftsman, the surface of the
+          mold, and the consistency of the clay all influence the texture and shape of each
+          individual brick.
+        </p>
+        <p>
+          In the initial stage, the clay is cleared of stones and coarse particles; it is then mixed
+          with water and kneaded until it reaches a moldable consistency. Ensuring a homogeneous
+          mixture allows the mold to be filled properly and helps minimize defects that might
+          otherwise occur during the drying process.
+        </p>
+      </div>
+      <img
+        src="/images/products/bespoke-terracotta-wall-drawings.jpg"
+        alt="Line drawings of the terracotta wall: a perspective of the offset brick screen in its concrete frame, an elevation, and a detail of hollow bricks threaded onto vertical steel rods"
+        width="1672"
+        height="941"
+        class="mt-10 block h-auto w-full md:mt-14"
+        loading="lazy"
+      />
+      <div class="mt-8 grid gap-6 text-sm text-ink/80 md:mt-10 md:grid-cols-2 lg:grid-cols-4 lg:gap-8">
+        {terracottaProcess.map((para) => (
+          <p class="border-t border-stone-light/70 pt-4">{para}</p>
+        ))}
+      </div>
     </div>
   </section>
 
