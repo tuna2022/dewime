@@ -2,7 +2,7 @@
 import { getCollection, render } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import PlaceholderPlate from "../components/PlaceholderPlate.astro";
-import { SITE } from "../consts";
+import { SITE, INTERIOR_PROJECTS_PUBLISHED } from "../consts";
 import { faqSchema } from "../lib/schema";
 import { stripMarkdown } from "../lib/text";
 
@@ -104,12 +104,14 @@ const artHouseGallery = [
             class="animate-reveal mt-10 flex flex-wrap gap-4"
             style="animation-delay: 240ms; opacity: 0;"
           >
-            <a
-              href="/interior-projects"
-              class="bg-paper px-6 py-3 font-mono text-xs uppercase tracking-[0.14em] text-ink transition-colors hover:bg-patina hover:text-paper"
-            >
-              View projects
-            </a>
+            {INTERIOR_PROJECTS_PUBLISHED && (
+              <a
+                href="/interior-projects"
+                class="bg-paper px-6 py-3 font-mono text-xs uppercase tracking-[0.14em] text-ink transition-colors hover:bg-patina hover:text-paper"
+              >
+                View projects
+              </a>
+            )}
             <a
               href="/contact"
               class="border border-paper px-6 py-3 font-mono text-xs uppercase tracking-[0.14em] text-paper transition-colors hover:bg-paper hover:text-ink"
@@ -256,6 +258,7 @@ const artHouseGallery = [
   </section>
 
   <!-- Featured interior projects -->
+  {INTERIOR_PROJECTS_PUBLISHED && (
   <section class="border-t border-stone-light/70 px-6 py-20 md:px-10 md:py-28">
     <div class="mx-auto max-w-6xl">
       <div class="flex items-baseline justify-between gap-4">
@@ -295,6 +298,7 @@ const artHouseGallery = [
       </div>
     </div>
   </section>
+  )}
 
   <!-- FAQ -->
   <section class="border-t border-stone-light/70 bg-paper px-6 py-20 md:px-10 md:py-28">

@@ -67,7 +67,12 @@ export const SITE = {
   ],
 } as const;
 
-export const NAV_LINKS = [
+// Interior Projects is temporarily unpublished. To bring it back, set this to true
+// and rename src/pages/_interior-projects back to src/pages/interior-projects
+// (Astro skips page folders that start with an underscore).
+export const INTERIOR_PROJECTS_PUBLISHED = false;
+
+const ALL_NAV_LINKS = [
   { href: "/about", label: "About" },
   { href: "/design-with-memory", label: "Design with Memory" },
   { href: "/#art-and-house", label: "Art and House" },
@@ -87,3 +92,7 @@ export const NAV_LINKS = [
   { href: "/practice", label: "Practice" },
   { href: "/contact", label: "Contact Us" },
 ] as const;
+
+export const NAV_LINKS = ALL_NAV_LINKS.filter(
+  (link) => INTERIOR_PROJECTS_PUBLISHED || link.href !== "/interior-projects"
+);

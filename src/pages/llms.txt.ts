@@ -1,13 +1,15 @@
 import type { APIRoute } from "astro";
 import { getCollection } from "astro:content";
-import { SITE } from "../consts";
+import { SITE, INTERIOR_PROJECTS_PUBLISHED } from "../consts";
 
 // llms.txt (llmstxt.org convention): a plain-language index of the site for
 // AI assistants and answer engines, generated from the same content
 // collections as the HTML pages so it can't drift out of sync.
 export const GET: APIRoute = async () => {
   const practice = (await getCollection("practice")).sort((a, b) => a.data.order - b.data.order);
-  const projects = (await getCollection("interiorProjects")).sort((a, b) => a.data.order - b.data.order);
+  const projects = INTERIOR_PROJECTS_PUBLISHED
+    ? (await getCollection("interiorProjects")).sort((a, b) => a.data.order - b.data.order)
+    : [];
   const products = (await getCollection("products")).sort((a, b) => a.data.order - b.data.order);
   const faq = (await getCollection("faq")).sort((a, b) => a.data.order - b.data.order);
   const capabilities = (await getCollection("capabilities")).sort((a, b) => a.data.order - b.data.order);
@@ -26,11 +28,15 @@ export const GET: APIRoute = async () => {
       (s) => `- [${s.data.title} / ${s.data.titleTr}](${SITE.domain}/practice/${s.id}): ${s.data.summary}`
     ),
     "",
-    "## Interior Projects",
-    ...projects.map(
-      (p) => `- [${p.data.title}, ${p.data.city} (${p.data.year})](${SITE.domain}/interior-projects/${p.id}): ${p.data.summary}`
-    ),
-    "",
+    ...(projects.length
+      ? [
+          "## Interior Projects",
+          ...projects.map(
+            (p) => `- [${p.data.title}, ${p.data.city} (${p.data.year})](${SITE.domain}/interior-projects/${p.id}): ${p.data.summary}`
+          ),
+          "",
+        ]
+      : []),
     "## Products Design",
     ...products.map(
       (p) => `- [${p.data.title} (${p.data.year})](${SITE.domain}/products/${p.id}): ${p.data.summary}`
