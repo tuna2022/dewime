@@ -19,22 +19,45 @@ const faqJsonLd = faqSchema(
   }))
 );
 
-// Order matters for the grid: two features, four small, two features, four small,
-// so both the 4-column desktop grid and the 2-column mobile grid close every row.
-// Each photo is shown with its caption underneath.
+// Order matters for the grid: wide, four small, wide, two features, wide, so both
+// the 4-column desktop grid and the 2-column mobile grid close every row.
+// "wide" photos span the full gallery width. Each photo has its caption underneath.
 const artHouseGallery = [
-  { src: "artist-studio-printmaking-workshop.jpg", caption: "A working studio, where prints, paintings and objects are made by hand.", alt: "Sunlit artist's studio with a printmaking press, framed paintings and hand-printed shirts hung to dry", feature: true },
-  { src: "fingerprint-pattern-metal-garden-gate.jpg", caption: "A garden gate cut from steel in the pattern of a fingerprint.", alt: "Bronze-finish garden gate laser-cut in a fingerprint pattern between lit rendered walls", feature: true },
-  { src: "bronze-handrail-lit-staircase.jpg", caption: "A folded bronze handrail, lit softly from beneath.", alt: "Folded bronze handrail returning into a plaster wall above an oak staircase with lit treads" },
-  { src: "timber-lattice-folding-shutters.jpg", caption: "Timber lattice shutters that fold open and cast patterned light.", alt: "Folding timber lattice shutters casting a grid of light across a white facade" },
-  { src: "carved-stone-door-surround.jpg", caption: "A door surround carved in stone with palm and wave motifs.", alt: "Hand-carved stone door surround with palm and wave relief at a garden entrance" },
-  { src: "natural-stone-garden-steps.jpg", caption: "Rough-hewn stone steps leading up to a lit terrace.", alt: "Rough natural stone garden steps beside a lit travertine terrace and planted beds" },
-  { src: "brick-garden-pavilion.jpg", caption: "A brick-walled garden pavilion that opens onto the trees.", alt: "Brick-walled garden pavilion with full-height glazing under mature trees", feature: true },
-  { src: "graffiti-mural-office-lounge.jpg", caption: "A full-height mural turns an office lounge into a gallery.", alt: "Large graffiti mural behind a blue sofa and leather lounge chairs in an industrial office", feature: true },
-  { src: "steel-balcony-railing.jpg", caption: "A bolted steel balcony with a horizontal rod railing.", alt: "Bolted steel balcony with a horizontal rod railing against a clear sky" },
-  { src: "timber-lattice-panel-workshop.jpg", caption: "A timber lattice panel, assembled joint by joint in the workshop.", alt: "Interlocking timber lattice panel being assembled on a workbench in the joinery shop" },
-  { src: "black-slatted-balconies-brick-facade.jpg", caption: "Black slatted balconies projecting from a brick facade.", alt: "Black vertical-slat balconies projecting from a brick facade at sunset" },
-  { src: "corten-steel-planters-entrance.jpg", caption: "Angled corten planters framing a timber-clad entrance.", alt: "Angled corten steel planters with trailing plants at a timber-clad entrance" },
+  { src: "brick-garden-pavilion.jpg",
+    title: "Brick Wall Construction: Waterproofing and Foundation Drainage Techniques",
+    caption: "Proper foundation waterproofing is essential for preventing moisture penetration and structural deterioration. The illustration compares an unprotected brick foundation with an effective drainage system. The construction process involves applying a waterproof membrane to the foundation wall, installing a protective drainage board, and placing a perforated drainage pipe within a gravel-filled trench. A geotextile filter prevents soil particles from clogging the system. This method redirects groundwater away from the structure, reducing hydrostatic pressure, rising damp, and long-term moisture damage.",
+    alt: "Brick-walled garden pavilion with full-height glazing under mature trees", wide: true,
+    // "hover" photos are revealed on hover (or tap/focus on touch screens).
+    hover: { src: "brick-wall-drainage-before-after.jpg", alt: "Cross-section of a brick wall: on the left, groundwater and rising damp soak into the masonry; on the right, a drainage membrane, gravel backfill and perforated pipe keep it dry" } },
+  { src: "bronze-handrail-lit-staircase.jpg", caption: "Bronze handrails are a premium architectural choice that blends timeless elegance with exceptional durability. Over time, the metal develops a rich, natural patina that enhances its character and unique visual appeal. Beyond aesthetics, bronze possesses inherent antimicrobial properties, making it an excellent option for high-traffic areas. It is highly resistant to corrosion and wear, ensuring the railing maintains its structural integrity for decades. Whether paired with modern glass or traditional wood, bronze handrails add a sophisticated, luxurious touch to any space. Furthermore, this versatile material responds beautifully to modern lighting techniques, transforming a simple architectural feature into a stunning sculptural element when illuminated from below. Ultimately, incorporating bronze is not just a design preference, but a lasting investment that elevates the overall atmosphere of a building.", alt: "Folded bronze handrail returning into a plaster wall above an oak staircase with lit treads" },
+  { src: "carved-stone-door-surround.jpg", caption: "Palm and wave motifs, hand-carved into natural stone, lend structures both a Mediterranean-inspired warmth and a timeless elegance. Palm leaves—symbols of abundance and victory since ancient times—create a bold yet inviting presence at the entrance. Complementing this, rhythmic wave motifs introduce fluidity and dynamism, softening the inherent rigidity of the stone. By uniting these two powerful elements of nature, this exquisite stonework highlights the building’s character from the very first step. Serving as a focal point in architectural projects, this stone surround—beyond its aesthetic appeal—becomes a lasting work of art, destined to endure for generations thanks to the inherent durability of the material.", alt: "Hand-carved stone door surround with palm and wave relief at a garden entrance" },
+  { src: "natural-stone-garden-steps.jpg", caption: "The combination of carefully crafted natural stone and vibrant vegetation creates a striking visual balance in garden and outdoor space designs. Blending the firm texture of stone with the softness of greenery and colorful flowers lends the space both an organic flow and a timeless character. Stone pathways, retaining walls, or decorative rocks define the natural boundaries of the landscape while echoing the inherent order found in nature itself. Over time, the natural patinas that develop on the stones, combined with the evolving growth stages of the plants, transform this harmony into a living, breathing work of art that flourishes through every season. This integration—achieved through the thoughtful selection of stone and the strategic placement of plants—not only enhances the aesthetic appeal of outdoor areas but also creates enduring and inviting spaces.", alt: "Rough natural stone garden steps beside a lit travertine terrace and planted beds" },
+  { src: "steel-balcony-railing.jpg", caption: "Balconies constructed with a bolted steel framework offer the industrial aesthetic sought by modern architecture, combined with high structural integrity and a minimalist sensibility. Opting for bolted connections rather than welds facilitates ease of assembly while lending the structure a sleek, precise engineering detail. Complementing this robust steel frame, horizontal railings create an uninterrupted linearity across the facade, adding depth and a contemporary flair to the space. These slender, elongated horizontal profiles ensure that sightlines remain unobstructed, maximizing the connection with the outdoors. The durability of the metal, harmonized with this modern design language, creates a long-lasting and striking focal point—an ideal feature for loft-style or contemporary facade designs.", alt: "Bolted steel balcony with a horizontal rod railing against a clear sky" },
+  { src: "timber-lattice-folding-shutters.jpg",
+    title: "Timber lattice shutters",
+    caption: [
+      "Teak and Iroko are resistant to decay, thanks to their high content of natural oils (teak oil) and silica. However, if these natural oils are not managed skillfully during the kiln-drying and processing stages, they can become a significant liability.",
+      "• The Secret of Craftsmanship: When Iroko or Teak is kiln-dried too rapidly at high temperatures, the outer layers dry quickly while the core remains moist—a phenomenon known as “case-hardening” (or shell-hardening stress). As soon as such timber is sliced into thin slats for a lattice, the internal tension is released, causing the slats to twist instantly along their axis. A skilled manufacturer will allow the timber to rest (condition) in the workshop environment for at least 2–3 weeks after kiln-drying to relieve this internal stress.",
+      "• Furthermore, before the slats are joined—whether via mortise-and-tenon or dowel joints—the natural oils on the mating surfaces must be completely removed (degreased) using acetone or a paint thinner. Subsequently, a polyurethane-based, D4-grade marine adhesive should be applied. Failure to do so will result in the wood’s own natural oils preventing the glue from bonding, eventually causing the lattice joints to pull apart.",
+    ],
+    alt: "Folding timber lattice shutters casting a grid of light across a white facade", wide: true,
+    hover: { src: "timber-lattice-panel-workshop.jpg", alt: "Interlocking timber lattice panel being assembled on a workbench in the joinery shop" } },
+  { src: "black-slatted-balconies-brick-facade.jpg",
+    caption: "Anticipating Heat Build-up: As welding progresses, the base metal heats up, and the workpiece’s capacity to dissipate heat decreases. While an inexperienced welder might continue at the same speed and current—risking burn-through or deformation of the part—a skilled welder, as they approach the end of the weld, will slightly adjust the torch angle and increase the welding speed in a controlled manner, maintaining a perfect balance between penetration and heat input.",
+    alt: "Black vertical-slat balconies projecting from a brick facade at sunset", feature: true,
+    hover: { src: "tig-welding-steel-frame.jpg", alt: "Welder in an auto-darkening helmet TIG-welding the corner of a steel frame, sparks flying in a dark workshop" } },
+  { src: "corten-steel-planters-entrance.jpg", caption: "Rust Run-off (Staining): During the first few months of the weathering process, rain will cause the steel to bleed carbon and rust particles. This run-off can permanently stain light-colored concrete, stone, or paved patio slabs underneath. Placing them over gravel, grass, or using drip trays can prevent this.", alt: "Angled corten steel planters with trailing plants at a timber-clad entrance", feature: true,
+    hover: { src: "corten-wall-rust-staining-comparison.jpg", alt: "Two corten steel walls: one set in gravel with no staining, the other above pale paving streaked with orange rust run-off" } },
+  { src: "graffiti-mural-office-lounge.jpg",
+    title: "Wall Surface Preparation for Graffiti Application",
+    // An array caption renders as separate paragraphs.
+    caption: [
+      "Before painting, the wall must be inspected for cracks, moisture penetration, loose coatings, and structural defects. All surfaces should be thoroughly cleaned to remove dust, grease, efflorescence, and deteriorated paint using appropriate mechanical or chemical methods.",
+      "Cracks and surface irregularities must be repaired with compatible fillers or cement-based repair mortars. Once repaired, the substrate should be allowed to cure and dry according to the manufacturer's specifications. Outdoor murals and artworks exposed to direct sunlight are vulnerable to ultraviolet (UV) radiation, which can cause pigment degradation, color fading, and deterioration of the paint's polymer binder. Prolonged exposure, combined with temperature fluctuations and moisture, may also contribute to cracking, chalking, and delamination.",
+      "Applying a UV-resistant clear varnish creates a protective coating that helps reduce photochemical degradation. High-performance acrylic or polyurethane varnishes containing UV absorbers and hindered amine light stabilizers (HALS) can improve color retention and coating durability.",
+    ],
+    alt: "Large graffiti mural behind a blue sofa and leather lounge chairs in an industrial office", wide: true,
+    hover: { src: "graffiti-wall-coating-and-painting.jpg", alt: "Two views of mural work: a spray gun applying a clear coat over a graffiti wall, and two painters on a rolling scaffold painting a large graffiti mural in a warehouse" } },
 ] as const;
 ---
 
@@ -105,16 +128,45 @@ const artHouseGallery = [
       <div class="grid grid-cols-2 gap-x-4 gap-y-6 md:grid-cols-4 md:gap-x-6 md:gap-y-8">
         {
           artHouseGallery.map((img) => {
+            const wide = "wide" in img && img.wide;
             const feature = "feature" in img && img.feature;
             return (
-              <figure class={feature ? "col-span-2" : ""}>
-                <img
-                  src={`/images/art-house/${img.src}`}
-                  alt={img.alt}
-                  class={`hover-zoom block w-full object-cover ${feature ? "aspect-[3/2]" : "aspect-[4/3]"}`}
-                  loading="lazy"
-                />
-                <figcaption class="mt-2 text-sm leading-snug text-ink/70">{img.caption}</figcaption>
+              <figure class={wide ? "col-span-2 md:col-span-4" : feature ? "col-span-2" : ""}>
+                {"hover" in img ? (
+                  <div class="group relative cursor-pointer" tabindex="0">
+                    <img
+                      src={`/images/art-house/${img.src}`}
+                      alt={img.alt}
+                      class={`block w-full object-cover ${wide ? "aspect-[16/9]" : "aspect-[3/2]"}`}
+                      loading="lazy"
+                    />
+                    <img
+                      src={`/images/art-house/${img.hover.src}`}
+                      alt={img.hover.alt}
+                      class="absolute inset-0 h-full w-full bg-paper object-contain opacity-0 transition-opacity duration-500 group-hover:opacity-100 group-focus:opacity-100"
+                      loading="lazy"
+                    />
+                  </div>
+                ) : (
+                  <img
+                    src={`/images/art-house/${img.src}`}
+                    alt={img.alt}
+                    class={`block w-full object-cover ${
+                      wide ? "aspect-[16/9]" : feature ? "hover-zoom aspect-[3/2]" : "hover-zoom aspect-[4/3]"
+                    }`}
+                    loading="lazy"
+                  />
+                )}
+                <figcaption class="mt-2 text-sm leading-snug text-ink/70">
+                  {"title" in img && (
+                    <span class="mt-4 mb-2 block font-display text-xl uppercase leading-tight text-ink md:text-2xl">
+                      {img.title}
+                    </span>
+                  )}
+                  {Array.isArray(img.caption)
+                    ? img.caption.map((para, i) => <span class={`block ${i > 0 ? "mt-2" : ""}`}>{para}</span>)
+                    : img.caption}
+                </figcaption>
               </figure>
             );
           })
